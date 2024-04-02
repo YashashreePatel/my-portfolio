@@ -73,7 +73,7 @@ const Experience = () => {
         <div className={`text-primary-3 ${styles.heading}`}>
           Where I have <span className='text-primary-2'>worked</span>
         </div>
-        <div className={`text-primary-3 ${styles.body}`}> I've been doing software development for about 2 years, and I'm always eager to learn more in this fast paced industry. </div>
+        <div className={`text-primary-3 ${styles.body}`}> I&apos;ve been doing software development for about 2 years, and I&apos;m always eager to learn more in this fast paced industry. </div>
       </div>
       <div className='w-2/3 flex flex-col gap-8'>
         {Experiences.map((item, index) =>
