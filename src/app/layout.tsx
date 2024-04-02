@@ -18,9 +18,11 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <head>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" />
       </head>
-      <body className={`bg-primary-4 ${inter.className}`}>
+      <body className={`bg-secondary-5 ${inter.className}`}>
         {children}
       </body>
     </html>

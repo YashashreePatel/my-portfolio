@@ -27,7 +27,7 @@ body {
   height: 100vh;
   position: relative;
   color: rgb(var(--foreground-hex));
-  font-family: inter, sans-serif;
+  font-family: Poppins, sans-serif;
   cursor: default;
   font-size: 16px;
 }
