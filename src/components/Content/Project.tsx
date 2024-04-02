@@ -10,22 +10,23 @@ type ProjectCardProps = {
 
 const ProjectCard = ({ project }: ProjectCardProps) => {
   return (
-    <div className='w-full flex flex-col gap-1 items-start'>
-      <div className={`text-primary-1 ${styles.exp_title}`}>
-        {project.name}
+    <div className='w-full flex flex-row gap-4 items-start justify-center'>
+      <div className='w-1/5 h-[100px]'>
+        <Image
+          width={400}
+          height={400}
+          src={project.image}
+          alt={project.name}
+          className={`w-full h-full object-cover rounded-[3px]`}
+        />
       </div>
-      <a
-        href={'/'}
-        target='_blank'
-        className={`text-primary-2 ${styles.exp_company}`}
-      >
-        abc
-      </a>
-      <div className={`text-secondary-2 ${styles.body}`}>
-        abc
-      </div>
-      <div className={`text-secondary-2 mt-3 ${styles.body}`}>
-        abc
+      <div className='w-4/5 flex flex-col gap-2 items-start'>
+        <div className={`text-primary-1 ${styles.exp_title}`}>
+          {project.name}
+        </div>
+        <div className={`text-secondary-2 ${styles.body}`}>
+          {project.description}
+        </div>
       </div>
     </div>
   )

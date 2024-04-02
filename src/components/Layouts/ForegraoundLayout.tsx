@@ -47,10 +47,10 @@ const ForegroundLayout = () => {
 
   return (
     <div className='w-full h-full relative flex flex-row gap-0 z-30'>
-      <div className='w-2/5 h-full pl-40 pr-20 py-16'>
-        <Header />
+      <div className='w-2/5 pl-40 pr-20 py-16'>
+        <Header currentSection={currentSection} />
       </div>
-      <div className='w-3/5 h-full flex flex-col gap-10 pl-20 pr-40 pt-16'>
+      <div className='w-3/5 flex flex-col gap-10 pl-20 pr-40 pt-16'>
         <Navbar currentSection={currentSection} />
         <div ref={componentRef} className={`pt-4 pb-16 flex flex-col gap-20 ${styles.scrollable}`}>
           <About />

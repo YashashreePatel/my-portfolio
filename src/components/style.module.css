@@ -1,4 +1,12 @@
 /* Headings and Subheadings */
+.logo {
+  font-size: 2.5rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -.025em;
+  font-family: 'Unna', serif;
+}
+
 .heading {
   font-size: 2.5rem;
   font-weight: 600;
@@ -8,7 +16,7 @@
 
 .sub_heading {
   font-size: 1.2rem;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1;
   letter-spacing: -.025em;
 }
@@ -45,47 +53,32 @@
 }
 
 .manu_item:hover {
+  color: var(--color-primary-0);
   background-color: var(--color-primary-3);
   padding: 12px 30px;
+}
+
+.manu_item:hover .manu_item_decoration {
+  background-color: var(--color-primary-0);
 }
 
 .manu_item_decoration {
   width: 0px;
   height: 2px;
-  background-color: var(--color-primary-0);
+  background-color: var(--color-grey-5);
   transition: 0.3s ease;
 }
 
 .manu_item_active {
   font-size: 1.1rem;
   font-weight: 500;
-  background-color: var(--color-primary-3);
+  color: var(--color-grey-5);
+  background-color: var(--color-primary-1);
   padding: 12px 30px;
 }
 
 .manu_item_active .manu_item_decoration {
   width: 30px;
-}
-
-/* Experience Section Styling */
-.exp_title {
-  font-size: 1.1rem;
-  font-weight: 400;
-  line-height: 1;
-  letter-spacing: -.025em;
-}
-
-.exp_company {
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1;
-  letter-spacing: -.025em;
-  transition: 0.3s ease;
-}
-
-.exp_company:hover {
-  color: var(--color-primary-1);
-  text-decoration: underline;
 }
 
 /* Custome Cursor Styling */
@@ -127,10 +120,59 @@
   transform: translate(-50%, -50%);
 }
 
+.hover_heading {
+  font-size: 1.9rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -.025em;
+}
+
 /* Scrollable Content */
 .scrollable {
   overflow-y: scroll;
   scrollbar-width: thin;
   scrollbar-color: transparent transparent;
   -ms-overflow-style: none;
+}
+
+/* Experience Section Styling */
+.exp_title {
+  font-size: 1.1rem;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -.025em;
+}
+
+.exp_company {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -.025em;
+  transition: 0.3s ease;
+}
+
+.exp_company:hover {
+  color: var(--color-primary-2);
+  text-decoration: underline;
+}
+
+.exp_card {
+  padding: 20px;
+  border-radius: 3px;
+  transition: 0.3s ease;
+}
+
+.skill_badge {
+  font-size: 0.7rem;
+  font-weight: 400;
+  padding: 5px 10px;
+  color: var(--color-primary-2);
+  background-color: var(--color-primary-4);
+  border-radius: 3px;
+  transition: 0.3s ease;
+}
+
+.exp_card:hover .skill_badge {
+  color: var(--color-grey-5);
+  background-color: var(--color-primary-2);
 }

@@ -6,4 +6,5 @@ export interface IProject {
   platform: string;
   platform_icon: string;
   project_link: string;
+  image: string;
 }
