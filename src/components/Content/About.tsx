@@ -29,7 +29,7 @@ const About = () => {
         <div className='w-full flex flex-col gap-4 items-left'>
           <div className={`text-primary-3 ${styles.sub_heading}`}> Hello, <span className='text-primary-2'>{Intro.name}</span> </div>
           <div className={`text-primary-3 transition-all duration-300 ease-in-out ${isHovered ? styles.hover_heading :  styles.heading}`}>
-            I'm
+            I&apos;m
             <span className='text-primary-2'> {Intro.title}</span>.
             I pour meticulous
             <span className='text-primary-2'> attention </span>

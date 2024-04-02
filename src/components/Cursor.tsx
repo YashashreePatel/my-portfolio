@@ -32,7 +32,7 @@ const Cursor = () => {
 
   useEffect(() => {
     spring();
-  }, [position]);
+  }, [spring]);
 
   return (
     <>
