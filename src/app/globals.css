@@ -32,4 +32,11 @@ body {
   font-size: 16px;
 }
 
+/* Swiper Styling */
+.swiper-pagination-bullet-active {
+  opacity: 1 !important;
+}
 
+.swiper-pagination-bullet {
+  background-color: var(--color-primary-2) !important;
+}
