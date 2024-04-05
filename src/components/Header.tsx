@@ -18,13 +18,13 @@ const Header = ({ currentSection }: HeaderProps) => {
     if (targetElement) {
       targetElement.scrollIntoView({
         behavior: 'smooth',
-        block: 'start',
+        block: 'center',
       });
     }
   }
 
   return (
-    <div className='w-full h-[150px] fixed flex flex-row gap-0 justify-center items-center px-40 backdrop-blur-[20px]'>
+    <div className='w-full h-[150px] fixed flex flex-row gap-0 justify-center items-center px-40 backdrop-blur-[20px] z-40'>
       <div className={`w-1/2`}>
         <Image
           width={50}
@@ -60,24 +60,3 @@ const Header = ({ currentSection }: HeaderProps) => {
 }
 
 export default Header;
-
-// <div className='w-full h-full'>
-//   <div className='w-full h-full flex flex-col gap-10 text-secondary-4'>
-//     <div className='w-full flex flex-col gap-2 items-start'>
-//       <div className={`${styles.heading}`}> {Intro.name} </div>
-//       <div className={`${styles.sub_heading}`}> {Intro.title} </div>
-//       <div className={`text-secondary-2 mt-4 ${styles.body}`}> {Intro.bio} </div>
-//     </div>
-//     <div className='w-full flex flex-row gap-5 items-center'>
-//       {SocialLinks.map((item, index) => {
-//         const IconComponent = FaIcons[item.name as keyof typeof FaIcons];
-
-//         return IconComponent ? (
-//           <a key={index} href={item.link} target='_blank' rel='noopener noreferrer'>
-//             <IconComponent className={`${styles.social_icons} hover:text-primary-2`} />
-//           </a>
-//         ) : null;
-//       })}
-//     </div>
-//   </div>
-// </div>

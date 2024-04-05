@@ -9,6 +9,8 @@ import { useEffect, useRef, useState } from 'react';
 import Header from '@/components/Header';
 import About from '@/components/Content/About';
 import Experience from '@/components/Content/Experience';
+import Testimonial from '@/components/Content/Testimonial';
+import Footer from '@/components/Footer';
 
 import styles from '@/components/style.module.css';
 
@@ -30,6 +32,7 @@ export default function Home() {
           scrollPosition >= sectionElement.offsetTop - offset &&
           scrollPosition < sectionElement.offsetTop + sectionElement.offsetHeight - offset
         ) {
+          console.log('sectionElement.offsetTop - offset', sectionElement.offsetTop - offset)
           setCurrentSection(tag);
         }
       });
@@ -48,14 +51,14 @@ export default function Home() {
     }
   }, []);
   return (
-    <div className='w-full h-full'>
-      {/* <Cursor /> */}
+    <div className='w-full h-full bg-background-gradient'>
+      <Cursor />
       <Header currentSection={currentSection} />
-      <div ref={componentRef} className={`w-full h-full flex flex-col gap-24 pb-16 ${styles.scrollable}`}>
-        <div className='w-full py-[250px] bg-background-gradient'>
-          <About />
-        </div>
+      <div ref={componentRef} className={`w-full h-full flex flex-col gap-56 pb-16 z-30 ${styles.scrollable}`}>
+        <About />
         <Experience />
+        <Testimonial />
+        <Footer />
       </div>
       {/* <BackgroundLayout />
       <ForegroundLayout /> */}

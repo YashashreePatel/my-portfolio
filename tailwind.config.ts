@@ -36,7 +36,7 @@ const config: Config = {
         'background-gif': 'url("/images/bg_gif.gif")',
         'background-image': 'url("/images/bg.jpeg")',
         'background-gradient': 'linear-gradient(to bottom right, #F5F2FE, #FFFBEE)',
-        'cursor-gradient': 'radial-gradient(circle, rgb(193, 202, 246, 0.5) 0%, rgba(0, 0, 0, 0) 50%)',
+        'cursor-gradient': 'radial-gradient(circle, rgb(193, 202, 246, 0.3) 0%, rgba(0, 0, 0, 0) 50%)',
       },
       boxShadow: {
         custom: '0 0 40px 5px var(--color-grey-4)',
