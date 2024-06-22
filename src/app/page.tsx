@@ -52,7 +52,7 @@ export default function Home() {
   }, []);
   return (
     <div className='w-full h-full bg-background-gradient'>
-      <Cursor />
+     {/* <Cursor /> */}
       <Header currentSection={currentSection} />
       <div ref={componentRef} className={`w-full h-full flex flex-col gap-56 pb-16 z-30 ${styles.scrollable}`}>
         <About />

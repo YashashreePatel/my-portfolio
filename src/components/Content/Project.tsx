@@ -21,7 +21,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         />
       </div>
       <div className='w-4/5 flex flex-col gap-2 items-start'>
-        <div className={`text-primary-1 ${styles.exp_title}`}>
+        <div className={`text-primary-3 ${styles.exp_title}`}>
           {project.name}
         </div>
         <div className={`text-secondary-2 ${styles.body}`}>

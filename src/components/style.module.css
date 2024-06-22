@@ -73,7 +73,7 @@
   font-size: 1.1rem;
   font-weight: 500;
   color: var(--color-grey-5);
-  background-color: var(--color-primary-1);
+  background-color: var(--color-primary-2);
   padding: 12px 30px;
 }
 
@@ -100,7 +100,7 @@
   border-radius: 50%;
   pointer-events: none;
   z-index: 50;
-  border: 1px solid var(--color-primary-1);
+  border: 1px solid var(--color-primary-3);
 }
 
 .inner_cursor::before,
@@ -108,7 +108,7 @@
   content: '';
   position: absolute;
   border-radius: 50%;
-  background-color: var(--color-primary-1);
+  background-color: var(--color-primary-3);
   pointer-events: none;
 }
 
@@ -166,7 +166,7 @@
   font-size: 0.7rem;
   font-weight: 400;
   padding: 5px 10px;
-  color: var(--color-primary-1);
+  color: var(--color-primary-2);
   background-color: var(--color-primary-3);
   opacity: 50%;
   border-radius: 3px;
