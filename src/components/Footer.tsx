@@ -25,7 +25,7 @@ const Footer = () => {
           ) : null;
         })}
       </div>
-      <div className={`w-[550px] text-primary-3 mt-2 text-center ${styles.body}`}>
+      <div className={`w-[550px] text-grey-3 mt-2 text-center ${styles.body}`}>
         Loosely designed in
         <span className='text-primary-2'> Figma </span>
         and coded in

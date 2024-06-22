@@ -12,7 +12,7 @@ type ExperienceCardProps = {
 
 const ExperienceCard = ({ experience }: ExperienceCardProps) => {
   return (
-    <div className={`flex flex-col gap-4 justify-center hover:shadow-custom ${styles.exp_card}`}>
+    <div className={`flex flex-col gap-4 justify-center bg-grey-5 hover:shadow-custom ${styles.exp_card}`}>
       <div className={`w-full flex flex-row gap-4 justify-start items-start`}>
         <div className='w-2/3 flex flex-col gap-1 items-start'>
           <div className={`text-grey-1 ${styles.exp_title}`}>

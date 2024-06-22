@@ -16,7 +16,7 @@ type TestimonialCardProps = {
 
 const TestimonialCard = ({ testimonial }: TestimonialCardProps) => {
   return (
-    <div className={`w-full flex flex-row gap-[80px] items-center ${styles.testi_card}`}>
+    <div className={`w-full flex flex-row gap-[80px] pr-[40px] rounded-[3px] bg-grey-5 items-center ${styles.testi_card}`}>
       <div className={`w-4/5 h-[150px] relative flex justify-center items-center rounded-[3px] ${styles.testi_content_card}`}>
         <div className={`pl-[40px] pr-[80px] text-center text-grey-1 ${styles.body}`}>
           {testimonial.content}
