@@ -1,7 +1,5 @@
 'use client';
-import BackgroundLayout from '@/components/Layouts/BackgroundLayout';
 import Cursor from '@/components/Cursor';
-import ForegroundLayout from '@/components/Layouts/ForegraoundLayout';
 import Navbar from '@/components/Header';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
@@ -51,17 +49,20 @@ export default function Home() {
     }
   }, []);
   return (
-    <div className='w-full h-full bg-background-gradient'>
+    <div className='w-full h-full relative px-40 pt-[50px] bg-background-gradient'>
      {/* <Cursor /> */}
+      <div className={`${styles.lines} z-20`}>
+        <div className={`${styles.line}`}></div>
+        <div className={`${styles.line}`}></div>
+        <div className={`${styles.line}`}></div>
+      </div>
       <Header currentSection={currentSection} />
-      <div ref={componentRef} className={`w-full h-full flex flex-col gap-56 pb-16 z-30 ${styles.scrollable}`}>
+      <div ref={componentRef} className={`w-full max-h-[calc(100vh-180px)] relative flex flex-col gap-56 px-36 py-28 z-30 ${styles.scrollable}`}>
         <About />
         <Experience />
         <Testimonial />
         <Footer />
       </div>
-      {/* <BackgroundLayout />
-      <ForegroundLayout /> */}
     </div>
   );
 }

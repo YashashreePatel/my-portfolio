@@ -28,10 +28,10 @@ const Navbar = ({ currentSection }: NavbarProps) => {
       <ul className='w-full flex flex-row gap-10 text-primary-0'>
         {Sections.map((item, index) =>
           <li key={index} className={`
-          ${currentSection === item.tag ? styles.manu_item_active : ''}
-          ${styles.manu_item} flex flex-row gap-2 items-center
+          ${currentSection === item.tag ? styles.menu_item_active : ''}
+          ${styles.menu_item} flex flex-row gap-2 items-center
         `}>
-            <span className={`${styles.manu_item_decoration}`}> </span>
+            <span className={`${styles.menu_item_decoration}`}> </span>
             <a
               href={`#${item.tag}`}
               onClick={(e) => {

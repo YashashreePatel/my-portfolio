@@ -32,7 +32,7 @@ const TestimonialCard = ({ testimonial }: TestimonialCardProps) => {
       <div className='w-1/5 flex flex-col gap-1 items-start'>
         <a
           href={testimonial.linkedin}
-          target='_blank' className={`text-grey-1 ${styles.testi_name}`}>
+          target='_blank' className={`text-grey-0 ${styles.testi_name}`}>
           {testimonial.name}
         </a>
         <div className={`text-grey-2 ${styles.testi_occupation}`}>
@@ -45,12 +45,12 @@ const TestimonialCard = ({ testimonial }: TestimonialCardProps) => {
 
 const Testimonial = () => {
   return (
-    <div id='testimonials' className='w-3/5 relative flex flex-col gap-2 m-auto items-start justify-start'>
+    <div id='testimonials' className='w-full relative flex flex-col gap-2 m-auto items-start justify-start'>
       <div className='w-full flex flex-col gap-4 items-center justify-center text-left'>
-        <div className={`text-primary-3 ${styles.heading}`}>
-          What <span className='text-primary-2'>people say</span> about <span className='text-primary-2'>me</span>
+        <div className={`${styles.primary_light} ${styles.heading}`}>
+          What <span className={`${styles.primary_dark}`}>people say</span> about <span className='text-primary-2'>me</span>
         </div>
-        <div className={`text-grey-3 ${styles.body}`}> Explore testimonials showcasing how I was able to positively impact lives. I valued their transparency and feedbacks. </div>
+        <div className={`${styles.grey_light} ${styles.body}`}> Explore testimonials showcasing how I was able to positively impact lives. I valued their transparency and feedbacks. </div>
       </div>
       <Swiper
         spaceBetween={50}

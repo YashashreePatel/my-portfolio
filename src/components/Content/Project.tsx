@@ -24,7 +24,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         <div className={`text-primary-3 ${styles.exp_title}`}>
           {project.name}
         </div>
-        <div className={`text-secondary-2 ${styles.body}`}>
+        <div className={`text-grey-2 ${styles.body}`}>
           {project.description}
         </div>
       </div>
@@ -35,7 +35,7 @@ const Project = () => {
   return (
     <div className='w-full flex flex-col gap-4'>
       <div className={`w-full text-primary-2 ${styles.section_heading}`}> Projects </div>
-      <div id='experience' className='w-full flex flex-col gap-12'>
+      <div id='projects' className='w-full flex flex-col gap-12'>
         {Projects.map((item, index) =>
           <ProjectCard key={index} project={item} />
         )}

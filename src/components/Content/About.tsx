@@ -12,7 +12,7 @@ const About = () => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div id='about' className='w-3/5 flex flex-row gap-10 pt-[250px] m-auto items-center justify-center'>
+    <div id='about' className='w-full flex flex-row gap-10 items-center justify-center'>
       <div className={`w-[250px] h-[350px] hover:w-[500px] rounded-[3px] overflow-hidden transition-all duration-300 ease-in-out`}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -27,31 +27,31 @@ const About = () => {
       </div>
       <div className='h-full flex-1 flex flex-col gap-10 justify-center'>
         <div className='w-full flex flex-col gap-4 items-left'>
-          <div className={`text-primary-3 ${styles.sub_heading}`}> Hello, <span className='text-primary-2'>{Intro.name}</span> </div>
-          <div className={`text-primary-3 transition-all duration-300 ease-in-out ${isHovered ? styles.hover_heading : styles.heading}`}>
-            I&apos;m
-            <span className='text-primary-2'> {Intro.title}</span>.
+          <div className={`${styles.grey_light} ${styles.sub_heading}`}> Hello, I'm <span className={`${styles.grey_dark}`}>{Intro.name}</span> </div>
+          <div className={`${styles.primary_light} transition-all duration-300 ease-in-out ${isHovered ? styles.hover_heading : styles.heading}`}>
+            A
+            <span className={`${styles.primary_dark}`}> {Intro.title}</span>.
             I pour meticulous
-            <span className='text-primary-2'> attention </span>
+            <span className={`${styles.primary_dark}`}> attention </span>
             into developing
-            <span className='text-primary-2'> compelling</span>,
-            <span className='text-primary-2'> intuitive</span>,
+            <span className={`${styles.primary_dark}`}> compelling</span>,
+            <span className={`${styles.primary_dark}`}> intuitive</span>,
             and
-            <span className='text-primary-2'> inclusive </span>
+            <span className={`${styles.primary_dark}`}> inclusive </span>
             solutions.
           </div>
-          <div className={`w-full flex flex-row gap-2 items-center text-grey-3 ${styles.body}`}>
+          {/* <div className={`w-full flex flex-row gap-2 items-center text-secondary-3 ${styles.body}`}>
             <span> See more about Yashashree </span>
             <FaArrowRightLong />
-          </div>
+          </div> */}
         </div>
-        <div className='w-full flex flex-row gap-5 items-center text-primary-0'>
+        <div className='w-full flex flex-row gap-5 items-center text-grey-0'>
           {SocialLinks.map((item, index) => {
             const IconComponent = FaIcons[item.name as keyof typeof FaIcons];
 
             return IconComponent ? (
               <a key={index} href={item.link} target='_blank' rel='noopener noreferrer'>
-                <IconComponent className={`${styles.social_icons} hover:text-primary-3`} />
+                <IconComponent className={`${styles.social_icons} hover:text-grey-3`} />
               </a>
             ) : null;
           })}

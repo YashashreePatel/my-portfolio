@@ -15,7 +15,7 @@ const ExperienceCard = ({ experience }: ExperienceCardProps) => {
     <div className={`flex flex-col gap-4 justify-center bg-grey-5 hover:shadow-custom ${styles.exp_card}`}>
       <div className={`w-full flex flex-row gap-4 justify-start items-start`}>
         <div className='w-2/3 flex flex-col gap-1 items-start'>
-          <div className={`text-grey-1 ${styles.exp_title}`}>
+          <div className={`text-grey-0 ${styles.exp_title}`}>
             {experience.title}
           </div>
           <a
@@ -41,12 +41,12 @@ const ExperienceCard = ({ experience }: ExperienceCardProps) => {
 
 const Experience = () => {
   return (
-    <div id='experience' className='w-3/5 relative flex flex-row gap-12 m-auto items-start justify-start'>
+    <div id='experience' className='w-full relative flex flex-row gap-12 m-auto items-start justify-start'>
       <div className='w-1/3 flex flex-col gap-4 pt-[20px] items-start justify-center text-left'>
-        <div className={`text-primary-3 ${styles.heading}`}>
-          Where I have <span className='text-primary-2'>worked</span>
+        <div className={`${styles.primary_light} ${styles.heading}`}>
+          Where I have <span className={`${styles.primary_dark}`}>worked</span>
         </div>
-        <div className={`text-grey-3 ${styles.body}`}> I&apos;ve been doing software development for about 2 years, and I&apos;m always eager to learn more in this fast paced industry. </div>
+        <div className={`${styles.grey_light} ${styles.body}`}> I&apos;ve been doing software development for about 2 years, and I&apos;m always eager to learn more in this fast paced industry. </div>
       </div>
       <div className='w-2/3 flex flex-col gap-8'>
         {Experiences.map((item, index) =>

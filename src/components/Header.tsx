@@ -24,24 +24,16 @@ const Header = ({ currentSection }: HeaderProps) => {
   }
 
   return (
-    <div className='w-full h-[150px] fixed flex flex-row gap-0 justify-center items-center px-40 backdrop-blur-[20px] z-40'>
-      <div className={`w-1/2`}>
-        <Image
-          width={50}
-          height={50}
-          src='/images/logo_light.svg'
-          alt='logo'
-          className={`w-[100px] h-auto object-cover rounded-[3px]`}
-        />
-      </div>
-      <div className={`w-1/2`}>
-        <ul className='w-full flex flex-row gap-10 justify-end items-center text-primary-0'>
-          {Sections.map((item, index) =>
+    <div className={`w-full h-[100px] relative flex flex-row justify-center items-center px-20 mb-[30px] bg-white rounded-[10px] shadow-custom z-40`}>
+      {/* Left Menu Items */}
+      <div className={`w-1/3`}>
+        <ul className='flex flex-row gap-10 justify-end items-center text-grey-2'>
+          {Sections.slice(0, 2).map((item, index) => (
             <li key={index} className={`
-          ${currentSection === item.tag ? styles.manu_item_active : ''}
-          ${styles.manu_item} flex flex-row gap-2 items-center
+          ${currentSection === item.tag ? styles.menu_item_active : styles.menu_item}
+          flex flex-row gap-2 items-center
         `}>
-              <span className={`${styles.manu_item_decoration}`}> </span>
+              <span className={`${styles.menu_item_decoration}`}></span>
               <a
                 href={`#${item.tag}`}
                 onClick={(e) => {
@@ -52,7 +44,37 @@ const Header = ({ currentSection }: HeaderProps) => {
                 {item.name}
               </a>
             </li>
-          )}
+          ))}
+        </ul>
+      </div>
+
+      {/* Logo in the Center */}
+      <div className={`w-1/3 text-center`}>
+        <div className={`text-secondary-0 ${styles.logo}`}>
+          Y. <span className='text-secondary-1'>Patel</span>
+        </div>
+      </div>
+
+      {/* Right Menu Items */}
+      <div className={`w-1/3`}>
+        <ul className='flex flex-row gap-10 justify-start items-center text-grey-2'>
+          {Sections.slice(2).map((item, index) => (
+            <li key={index} className={`
+          ${currentSection === item.tag ? styles.menu_item_active : styles.menu_item}
+          flex flex-row gap-2 items-center
+        `}>
+              <span className={`${styles.menu_item_decoration}`}></span>
+              <a
+                href={`#${item.tag}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  smoothScroll(item.tag);
+                }}
+              >
+                {item.name}
+              </a>
+            </li>
+          ))}
         </ul>
       </div>
     </div>
