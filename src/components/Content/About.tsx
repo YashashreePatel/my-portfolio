@@ -45,7 +45,7 @@ const About = () => {
             <FaArrowRightLong />
           </div> */}
         </div>
-        <div className='w-full flex flex-row gap-5 items-center text-grey-0'>
+        <div className={`w-full flex flex-row gap-5 items-center ${styles.grey_dark}`}>
           {SocialLinks.map((item, index) => {
             const IconComponent = FaIcons[item.name as keyof typeof FaIcons];
 

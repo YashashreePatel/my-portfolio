@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from 'react';
 import Header from '@/components/Header';
 import About from '@/components/Content/About';
 import Experience from '@/components/Content/Experience';
+import Project from '@/components/Content/Project';
 import Testimonial from '@/components/Content/Testimonial';
 import Footer from '@/components/Footer';
 
@@ -57,9 +58,10 @@ export default function Home() {
         <div className={`${styles.line}`}></div>
       </div>
       <Header currentSection={currentSection} />
-      <div ref={componentRef} className={`w-full max-h-[calc(100vh-180px)] relative flex flex-col gap-56 px-36 py-28 z-30 ${styles.scrollable}`}>
+      <div ref={componentRef} className={`w-full max-h-[calc(100vh-200px)] relative flex flex-col gap-56 px-36 py-28 z-30 ${styles.scrollable}`}>
         <About />
         <Experience />
+        <Project />
         <Testimonial />
         <Footer />
       </div>

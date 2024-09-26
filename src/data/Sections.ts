@@ -8,6 +8,10 @@ export const Sections = [
     tag: 'experience',
   },
   {
+    name: 'Projects',
+    tag: 'projects',
+  },
+  {
     name: 'Testimonials',
     tag: 'testimonials',
   },

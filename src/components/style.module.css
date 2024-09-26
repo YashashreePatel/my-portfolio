@@ -4,8 +4,7 @@
   font-size: 1.9rem;
   font-weight: 600;
   line-height: 1;
-  padding: 15px 30px;
-  border-radius: 5px;
+  border-radius: 100%;
   background-color: var(--color-secondary-3);
   letter-spacing: -.025em;
   font-family: 'Unna', serif;
@@ -261,6 +260,20 @@
 
 .exp_card:hover .skill_badge {
   opacity: 100%;
+}
+
+/* Project Section Styling */
+.project_card {
+  border-radius: 3px;
+  transition: 0.3s ease;
+}
+
+.project_image {
+  transition: 0.3s ease; 
+}
+
+.project_card:hover .project_image {
+  scale: 1.1;
 }
 
 /* Testimonial Section Styling */

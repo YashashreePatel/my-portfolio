@@ -42,7 +42,7 @@ const ExperienceCard = ({ experience }: ExperienceCardProps) => {
 const Experience = () => {
   return (
     <div id='experience' className='w-full relative flex flex-row gap-12 m-auto items-start justify-start'>
-      <div className='w-1/3 flex flex-col gap-4 pt-[20px] items-start justify-center text-left'>
+      <div className='w-1/3 flex flex-col gap-4 items-start justify-center text-left'>
         <div className={`${styles.primary_light} ${styles.heading}`}>
           Where I have <span className={`${styles.primary_dark}`}>worked</span>
         </div>

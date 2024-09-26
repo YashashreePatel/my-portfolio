@@ -6,7 +6,7 @@ import { Testimonials } from '@/data/Testimonials';
 import { ITestimonail } from '@/types/ITestimonial';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination } from 'swiper/modules';
+import { Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
@@ -58,7 +58,11 @@ const Testimonial = () => {
         pagination={{
           clickable: true,
         }}
-        modules={[Pagination]}
+        autoplay={{
+          delay: 2000,
+          disableOnInteraction: false,
+        }}
+        modules={[Pagination, Autoplay]}
         className="w-full !p-[40px]"
       >
         {Testimonials.map((item, index) =>
