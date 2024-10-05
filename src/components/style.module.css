@@ -1,14 +1,16 @@
 /* Headings and Subheadings */
 .logo {
-  display: inline-block;
   font-size: 1.9rem;
   font-weight: 600;
   line-height: 1;
-  border-radius: 100%;
+  border-radius: 50px;
   background-color: var(--color-secondary-3);
   letter-spacing: -.025em;
   font-family: 'Unna', serif;
-  box-shadow: 0 0 10px 2px var(--color-grey-4);
+  transition: 0.3s ease;
+}
+.dark .logo {
+  background-color: var(--color-grey-0);
 }
 
 .heading {
@@ -17,24 +19,52 @@
   line-height: 1;
   letter-spacing: -.025em;
 }
+
 .primary_dark {
   color: var(--color-primary-2);
 }
+
 .primary_light {
   color: var(--color-primary-3);
 }
 
-.sub_heading {
-  font-size: 1.1rem;
-  font-weight: 450;
-  line-height: 1;
-  letter-spacing: -.025em;
+.dark .primary_dark {
+  color: var(--color-grey-4);
 }
+
+.dark .primary_light {
+  color: var(--color-grey-1);
+}
+
 .grey_dark {
   color: var(--color-grey-0);
 }
+
+.grey_mid {
+  color: var(--color-grey-2);
+}
+
 .grey_light {
   color: var(--color-grey-3);
+}
+
+.dark .grey_dark {
+  color: var(--color-secondary-1);
+}
+
+.dark .grey_mid {
+  color: var(--color-grey-2);
+}
+
+.dark .grey_light {
+  color: var(--color-grey-2);
+}
+
+.card_title {
+  font-size: 1.1rem;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -.025em;
 }
 
 .section_heading {
@@ -76,6 +106,7 @@
   background: var(--color-primary-4);
   overflow: hidden;
 }
+
 .line::after {
   content: "";
   display: block;
@@ -86,31 +117,44 @@
   left: 0;
   background: linear-gradient(to bottom, var(--color-secondary-3) 0%, var(--color-secondary-2) 75%, var(--color-secondary-1) 100%);
   -webkit-animation: drop 7s 0s infinite;
-          animation: drop 7s 0s infinite;
+  animation: drop 7s 0s infinite;
   -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
   -webkit-animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
-          animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
+  animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
 }
+
+.dark .line {
+  background: rgba(45, 45, 45, 1);
+}
+
+.dark .line::after {
+  background: linear-gradient(to bottom, var(--color-grey-0) 0%,var(--color-grey-0) 75%, rgba(45, 45, 45, 1) 100%);
+}
+
 .line:nth-child(1) {
   margin-left: -25%;
 }
+
 .line:nth-child(1)::after {
   -webkit-animation-delay: 2s;
-          animation-delay: 2s;
+  animation-delay: 2s;
 }
+
 .line:nth-child(3) {
   margin-left: 25%;
 }
+
 .line:nth-child(3)::after {
   -webkit-animation-delay: 2.5s;
-          animation-delay: 2.5s;
+  animation-delay: 2.5s;
 }
 
 @-webkit-keyframes drop {
   0% {
     top: -50%;
   }
+
   100% {
     top: 110%;
   }
@@ -120,6 +164,7 @@
   0% {
     top: -50%;
   }
+
   100% {
     top: 110%;
   }
@@ -143,6 +188,10 @@
   padding: 12px 30px;
 }
 
+.dark .menu_item:hover {
+  color: var(--color-secondary-2);
+}
+
 .menu_item_decoration {
   width: 0px;
   height: 2px;
@@ -160,6 +209,11 @@
   transition: 0.3s ease;
   color: var(--color-grey-5);
   background-color: var(--color-primary-2);
+}
+
+.dark .menu_item_active {
+  color: var(--color-grey-0);
+  background-color: var(--color-secondary-1);
 }
 
 /* .menu_item_active .menu_item_decoration {
@@ -221,13 +275,6 @@
 }
 
 /* Experience Section Styling */
-.exp_title {
-  font-size: 1.1rem;
-  font-weight: 400;
-  line-height: 1;
-  letter-spacing: -.025em;
-}
-
 .exp_company {
   font-size: 1rem;
   font-weight: 400;
@@ -239,6 +286,10 @@
 .exp_company:hover {
   color: var(--color-primary-2);
   text-decoration: underline;
+}
+
+.dark .exp_company:hover {
+  color: var(--color-secondary-3);
 }
 
 .exp_card {
@@ -258,6 +309,12 @@
   transition: 0.3s ease;
 }
 
+.dark .skill_badge {
+  font-weight: 440;
+  color: var(--color-secondary-0);
+  background-color: var(--color-grey-1);
+}
+
 .exp_card:hover .skill_badge {
   opacity: 100%;
 }
@@ -269,16 +326,22 @@
 }
 
 .project_image {
-  transition: 0.3s ease; 
+  opacity: 50%;
+  transition: 0.3s ease;
 }
 
 .project_card:hover .project_image {
+  opacity: 100%;
   scale: 1.1;
 }
 
 /* Testimonial Section Styling */
 .testi_card:hover .testi_content_card {
   box-shadow: 0 0 40px 5px var(--color-grey-4);
+}
+
+.testi_card:hover .testi_content_card {
+  box-shadow: 0 0 40px 5px rgba(25, 25, 25, 1);
 }
 
 .testi_content_card {

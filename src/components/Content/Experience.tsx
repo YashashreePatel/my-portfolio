@@ -12,21 +12,21 @@ type ExperienceCardProps = {
 
 const ExperienceCard = ({ experience }: ExperienceCardProps) => {
   return (
-    <div className={`flex flex-col gap-4 justify-center bg-grey-5 hover:shadow-custom ${styles.exp_card}`}>
+    <div className={`flex flex-col gap-4 justify-center bg-grey-5 dark:bg-grey-dark hover:shadow-custom dark:shadow-dark-custom ${styles.exp_card}`}>
       <div className={`w-full flex flex-row gap-4 justify-start items-start`}>
         <div className='w-2/3 flex flex-col gap-1 items-start'>
-          <div className={`text-grey-0 ${styles.exp_title}`}>
+          <div className={`${styles.grey_dark} ${styles.card_title}`}>
             {experience.title}
           </div>
           <a
             href={experience.company_website}
             target='_blank'
-            className={`text-grey-2 ${styles.exp_company}`}
+            className={`${styles.grey_mid} ${styles.exp_company}`}
           >
             @{experience.company}
           </a>
         </div>
-        <div className={`w-1/3 text-grey-3 ${styles.body}`}>
+        <div className={`w-1/3 ${styles.grey_light} ${styles.body}`}>
           {experience.duration}
         </div>
       </div>

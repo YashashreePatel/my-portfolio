@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
+import styles from '@/components/style.module.css';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,7 +23,7 @@ export default function RootLayout({
         {/* <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" /> */}
       </head>
-      <body className={`bg-grey-5 ${inter.className}`}>
+      <body className={`bg-grey-5 dark:bg-grey-dark ${inter.className}`}>
         {children}
       </body>
     </html>

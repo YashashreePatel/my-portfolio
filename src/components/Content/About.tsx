@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import styles from '@/components/style.module.css';
 
@@ -10,6 +10,11 @@ import { FaArrowRightLong } from 'react-icons/fa6';
 
 const About = () => {
   const [isHovered, setIsHovered] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    setIsDarkMode(document.documentElement.classList.contains('dark'));
+  }, []);
 
   return (
     <div id='about' className='w-full flex flex-row gap-10 items-center justify-center'>
@@ -20,6 +25,7 @@ const About = () => {
         <Image
           width={400}
           height={400}
+          // src={`/images/${isDarkMode ? 'dark-about.jpeg' : 'about.jpeg'}`}
           src='/images/about.jpeg'
           alt='about image'
           className={`w-full h-full object-cover`}
@@ -27,7 +33,7 @@ const About = () => {
       </div>
       <div className='h-full flex-1 flex flex-col gap-10 justify-center'>
         <div className='w-full flex flex-col gap-4 items-left'>
-          <div className={`${styles.grey_light} ${styles.sub_heading}`}> Hello, I&apos;m <span className={`${styles.grey_dark}`}>{Intro.name}</span> </div>
+          <div className={`${styles.grey_light} ${styles.card_title}`}> Hello, I&apos;m <span className={`${styles.grey_dark}`}>{Intro.name}</span> </div>
           <div className={`${styles.primary_light} transition-all duration-300 ease-in-out ${isHovered ? styles.hover_heading : styles.heading}`}>
             A
             <span className={`${styles.primary_dark}`}> {Intro.title}</span>.

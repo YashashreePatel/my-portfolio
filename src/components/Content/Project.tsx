@@ -12,8 +12,8 @@ type ProjectCardProps = {
 
 const ProjectCard = ({ project }: ProjectCardProps) => {
   return (
-    <div className={`w-full flex flex-col gap-4 bg-white items-start justify-center hover:shadow-custom ${styles.project_card}`}>
-      <div className='w-full h-[250px] overflow-hidden'>
+    <div className={`w-full flex flex-col gap-4 bg-grey-5 dark:bg-grey-dark items-start justify-start hover:shadow-custom dark:shadow-dark-custom ${styles.project_card}`}>
+      <div className='w-full h-[250px] overflow-hidden rounded-t-[3px]'>
         <Image
           width={400}
           height={400}
@@ -24,7 +24,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
       </div>
       <div className='w-full flex flex-col gap-2 p-4 justify-center'>
         <div className='w-full flex flex-row gap-2'>
-          <div className={`w-full text-left ${styles.primary_dark} ${styles.exp_title}`}>
+          <div className={`w-full text-left ${styles.grey_dark} ${styles.card_title}`}>
             {project.name}
           </div>
           <div className={`text-right ${styles.grey_dark}`}>
@@ -50,7 +50,7 @@ const Project = () => {
         </div>
         <div className={`${styles.grey_light} ${styles.body}`}> Here are some projects where I&apos;ve brought creativity and code together to solve challenges, each one contributing to my journey of growth and learning. </div>
       </div>
-      <div className='w-full grid grid-cols-2 gap-8'>
+      <div className='w-full grid grid-cols-2 items-start gap-8'>
         {Projects.map((item, index) =>
           <ProjectCard key={index} project={item} />
         )}

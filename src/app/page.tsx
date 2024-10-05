@@ -50,7 +50,7 @@ export default function Home() {
     }
   }, []);
   return (
-    <div className='w-full h-full relative px-40 pt-[50px] bg-background-gradient'>
+    <div className='w-full h-full relative px-40 pt-[50px] bg-background-gradient dark:bg-dark-background-gradient'>
      {/* <Cursor /> */}
       <div className={`${styles.lines} z-20`}>
         <div className={`${styles.line}`}></div>

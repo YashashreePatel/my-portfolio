@@ -16,9 +16,9 @@ type TestimonialCardProps = {
 
 const TestimonialCard = ({ testimonial }: TestimonialCardProps) => {
   return (
-    <div className={`w-full flex flex-row gap-[80px] pr-[40px] rounded-[3px] bg-grey-5 items-center ${styles.testi_card}`}>
+    <div className={`w-full flex flex-row gap-[80px] pr-[40px] rounded-[3px] bg-grey-5 dark:bg-grey-0 items-center ${styles.testi_card}`}>
       <div className={`w-4/5 h-[150px] relative flex justify-center items-center rounded-[3px] ${styles.testi_content_card}`}>
-        <div className={`pl-[40px] pr-[80px] text-center text-grey-1 ${styles.body}`}>
+        <div className={`pl-[40px] pr-[80px] text-center text-grey-1 dark:text-grey-2 ${styles.body}`}>
           {testimonial.content}
         </div>
         <Image
@@ -32,10 +32,10 @@ const TestimonialCard = ({ testimonial }: TestimonialCardProps) => {
       <div className='w-1/5 flex flex-col gap-1 items-start'>
         <a
           href={testimonial.linkedin}
-          target='_blank' className={`text-grey-0 ${styles.testi_name}`}>
+          target='_blank' className={`${styles.grey_dark} ${styles.testi_name}`}>
           {testimonial.name}
         </a>
-        <div className={`text-grey-2 ${styles.testi_occupation}`}>
+        <div className={`${styles.grey_mid} ${styles.testi_occupation}`}>
           {testimonial.occupation}
         </div>
       </div>
@@ -48,7 +48,7 @@ const Testimonial = () => {
     <div id='testimonials' className='w-full relative flex flex-col gap-2 m-auto items-start justify-start'>
       <div className='w-full flex flex-col gap-4 items-center justify-center text-left'>
         <div className={`${styles.primary_light} ${styles.heading}`}>
-          What <span className={`${styles.primary_dark}`}>people say</span> about <span className='text-primary-2'>me</span>
+          What <span className={`${styles.primary_dark}`}>people say</span> about <span className={`${styles.primary_dark}`}>me</span>
         </div>
         <div className={`${styles.grey_light} ${styles.body}`}> Explore testimonials showcasing how I was able to positively impact lives. I valued their transparency and feedbacks. </div>
       </div>
