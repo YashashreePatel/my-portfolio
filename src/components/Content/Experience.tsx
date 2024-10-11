@@ -14,7 +14,7 @@ const ExperienceCard = ({ experience }: ExperienceCardProps) => {
   return (
     <div className={`flex flex-col gap-4 justify-center bg-grey-5 dark:bg-grey-dark hover:shadow-custom dark:shadow-dark-custom ${styles.exp_card}`}>
       <div className={`w-full flex flex-row gap-4 justify-start items-start`}>
-        <div className='w-2/3 flex flex-col gap-1 items-start'>
+        <div className='flex-1 flex flex-col 2xl:gap-2 gap-1 items-start text-left'>
           <div className={`${styles.grey_dark} ${styles.card_title}`}>
             {experience.title}
           </div>
@@ -26,7 +26,7 @@ const ExperienceCard = ({ experience }: ExperienceCardProps) => {
             @{experience.company}
           </a>
         </div>
-        <div className={`w-1/3 ${styles.grey_light} ${styles.body}`}>
+        <div className={`${styles.grey_light} ${styles.body} text-right`}>
           {experience.duration}
         </div>
       </div>
@@ -41,14 +41,14 @@ const ExperienceCard = ({ experience }: ExperienceCardProps) => {
 
 const Experience = () => {
   return (
-    <div id='experience' className='w-full relative flex flex-row gap-12 m-auto items-start justify-start'>
-      <div className='w-1/3 flex flex-col gap-4 items-start justify-center text-left'>
+    <div id='experience' className='w-full relative flex lg:flex-row xs:flex-col gap-10 m-auto items-start justify-start'>
+      <div className='lg:w-1/3 xs:w-full flex flex-col gap-4 lg:items-start xs:items-center justify-center lg:text-left xs:text-center'>
         <div className={`${styles.primary_light} ${styles.heading}`}>
           Where I have <span className={`${styles.primary_dark}`}>worked</span>
         </div>
         <div className={`${styles.grey_light} ${styles.body}`}> I&apos;ve been doing software development for about 2 years, and I&apos;m always eager to learn more in this fast paced industry. </div>
       </div>
-      <div className='w-2/3 flex flex-col gap-8'>
+      <div className='lg:w-2/3 xs:w-full flex flex-col lg:gap-8 xs:gap-4'>
         {Experiences.map((item, index) =>
           <ExperienceCard key={index} experience={item} />
         )}

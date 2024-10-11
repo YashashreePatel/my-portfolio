@@ -16,10 +16,13 @@ type HeaderProps = {
 const Header = ({ currentSection }: HeaderProps) => {
   function smoothScroll(targetId: string) {
     const targetElement = document.getElementById(targetId);
+  
     if (targetElement) {
+      const isSmallScreen = window.matchMedia('(max-width: 1024px)').matches;
+  
       targetElement.scrollIntoView({
         behavior: 'smooth',
-        block: 'center',
+        block: isSmallScreen ? 'start' : 'center',
       });
     }
   }
@@ -45,7 +48,7 @@ const Header = ({ currentSection }: HeaderProps) => {
   };
 
   return (
-    <div className={`w-full h-[100px] relative flex flex-row items-center justify-between px-16 mb-[50px] bg-transperant rounded-[10px] z-40`}>
+    <div className={`w-full h-[60px] relative flex flex-row items-center justify-between 2xl:px-36 xl:px-28 px-16 lg:mb-[50px] xs:mb-[30px] bg-transperant rounded-[10px] z-40`}>
       {/* Logo in the Left */}
       <div className={`w-[100px] shadow-custom dark:shadow-dark-custom ${styles.logo}`}>
         {/* Y. <span className='text-secondary-1'>Patel</span> */}
@@ -60,7 +63,7 @@ const Header = ({ currentSection }: HeaderProps) => {
       </div>
 
       {/* Right Menu Items */}
-      <ul className={`flex flex-row justify-end items-center ${styles.grey_mid}`}>
+      <ul className={`lg:flex xs:hidden flex-row justify-end items-center 2xl:gap-12 lg:gap-10 xs:gap-8 ${styles.grey_mid}`}>
         {Sections.map((item, index) => (
           <li key={index} className={`
               ${currentSection === item.tag ? styles.menu_item_active : styles.menu_item}

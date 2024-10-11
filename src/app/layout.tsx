@@ -23,7 +23,7 @@ export default function RootLayout({
         {/* <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" /> */}
       </head>
-      <body className={`bg-grey-5 dark:bg-grey-dark ${inter.className}`}>
+      <body className={`bg-background-gradient dark:bg-dark-background-gradient ${inter.className}`}>
         {children}
       </body>
     </html>

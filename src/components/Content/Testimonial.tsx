@@ -29,7 +29,7 @@ const TestimonialCard = ({ testimonial }: TestimonialCardProps) => {
           className={`w-[80px] h-[80px] absolute right-[-40px] rounded-full object-cover`}
         />
       </div>
-      <div className='w-1/5 flex flex-col gap-1 items-start'>
+      <div className='w-1/5 flex flex-col 2xl:gap-2 gap-1 items-start'>
         <a
           href={testimonial.linkedin}
           target='_blank' className={`${styles.grey_dark} ${styles.testi_name}`}>
@@ -46,7 +46,7 @@ const TestimonialCard = ({ testimonial }: TestimonialCardProps) => {
 const Testimonial = () => {
   return (
     <div id='testimonials' className='w-full relative flex flex-col gap-2 m-auto items-start justify-start'>
-      <div className='w-full flex flex-col gap-4 items-center justify-center text-left'>
+      <div className='w-full flex flex-col gap-4 items-center justify-center text-center'>
         <div className={`${styles.primary_light} ${styles.heading}`}>
           What <span className={`${styles.primary_dark}`}>people say</span> about <span className={`${styles.primary_dark}`}>me</span>
         </div>

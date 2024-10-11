@@ -10,6 +10,14 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        'xs': '344px',
+        'sm': '640px',
+        'md': '768px',
+        'lg': '1024px',
+        'xl': '1280px',
+        '2xl': '1536px',
+      },
       colors: {
         primary: {
           0: '#2F2A47',
