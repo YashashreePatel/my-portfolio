@@ -50,7 +50,7 @@ export default function Home() {
     }
   }, []);
   return (
-    <div className='w-full h-full relative px-40 pt-[50px] bg-background-gradient dark:bg-dark-background-gradient'>
+    <div className='2xl:w-[1250px] w-full h-full 2xl:m-auto relative 2xl:px-0 xl:px-20 lg:px-16 px-0 2xl:pt-[80px] pt-[50px]'>
      {/* <Cursor /> */}
       <div className={`${styles.lines} z-20`}>
         <div className={`${styles.line}`}></div>
@@ -58,7 +58,7 @@ export default function Home() {
         <div className={`${styles.line}`}></div>
       </div>
       <Header currentSection={currentSection} />
-      <div ref={componentRef} className={`w-full max-h-[calc(100vh-200px)] relative flex flex-col gap-56 px-36 py-28 z-30 ${styles.scrollable}`}>
+      <div ref={componentRef} className={`w-full 2xl:max-h-[calc(100vh-190px)] lg:max-h-[calc(100vh-160px)] xs:max-h-[calc(100vh-140px)] relative flex flex-col gap-56 2xl:px-36 xl:px-28 px-16 lg:py-28 xs:py-16 z-30 ${styles.scrollable}`}>
         <About />
         <Experience />
         <Project />

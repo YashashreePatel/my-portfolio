@@ -17,8 +17,8 @@ const About = () => {
   }, []);
 
   return (
-    <div id='about' className='w-full flex flex-row gap-10 items-center justify-center'>
-      <div className={`w-[250px] h-[350px] hover:w-[500px] rounded-[3px] overflow-hidden transition-all duration-300 ease-in-out`}
+    <div id='about' className='w-full flex lg:flex-row xs:flex-col gap-10 items-center justify-center'>
+      <div className={`2xl:w-[300px] 2xl:h-[400px] lg:w-[250px] h-[350px] xs:w-full lg:hover:w-[500px] lg:order-first xs:order-last rounded-[3px] overflow-hidden transition-all duration-300 ease-in-out`}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
@@ -32,9 +32,9 @@ const About = () => {
         />
       </div>
       <div className='h-full flex-1 flex flex-col gap-10 justify-center'>
-        <div className='w-full flex flex-col gap-4 items-left'>
-          <div className={`${styles.grey_light} ${styles.card_title}`}> Hello, I&apos;m <span className={`${styles.grey_dark}`}>{Intro.name}</span> </div>
-          <div className={`${styles.primary_light} transition-all duration-300 ease-in-out ${isHovered ? styles.hover_heading : styles.heading}`}>
+        <div className='w-full flex flex-col gap-4'>
+          <div className={`${styles.grey_light} ${styles.card_title} lg:text-left xs:text-center`}> Hello, I&apos;m <span className={`${styles.grey_dark}`}>{Intro.name}</span> </div>
+          <div className={`${styles.primary_light} lg:text-left xs:text-center transition-all duration-300 ease-in-out ${isHovered ? styles.hover_heading : styles.heading}`}>
             A
             <span className={`${styles.primary_dark}`}> {Intro.title}</span>.
             I pour meticulous
@@ -51,7 +51,7 @@ const About = () => {
             <FaArrowRightLong />
           </div> */}
         </div>
-        <div className={`w-full flex flex-row gap-5 items-center ${styles.grey_dark}`}>
+        <div className={`w-full flex flex-row gap-5 items-center lg:justify-start xs:justify-center ${styles.grey_dark}`}>
           {SocialLinks.map((item, index) => {
             const IconComponent = FaIcons[item.name as keyof typeof FaIcons];
 
