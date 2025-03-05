@@ -1,9 +1,20 @@
 import type { Metadata } from 'next';
+import { Outfit } from "next/font/google";
 import { Inter } from 'next/font/google';
 import './globals.css';
 import styles from '@/components/style.module.css';
 
-const inter = Inter({ subsets: ["latin"] });
+const outfit = Outfit({
+  variable: "--font-outfit",
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"]
+});
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"]
+});
 
 export const metadata: Metadata = {
   title: 'Yashashree Patel',
@@ -19,11 +30,11 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <head>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon2.ico" />
         {/* <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" /> */}
       </head>
-      <body className={`bg-background-gradient dark:bg-dark-background-gradient ${inter.className}`}>
+      <body className={`${outfit.variable} ${inter.variable}`}>
         {children}
       </body>
     </html>

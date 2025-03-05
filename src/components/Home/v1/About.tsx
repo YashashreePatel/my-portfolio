@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import styles from '@/components/style.module.css';
+import styles from '@/components/v1/style.module.css';
 
 import { Intro } from '@/data/Intro';
 import { SocialLinks } from '@/data/SocialLinks';
@@ -46,7 +46,7 @@ const About = () => {
             <span className={`${styles.primary_dark}`}> inclusive </span>
             solutions.
           </div>
-          {/* <div className={`w-full flex flex-row gap-2 items-center text-secondary-3 ${styles.body}`}>
+          {/* <div className={`w-full flex flex-row gap-2 items-center text-[#FFFBEE] ${styles.body}`}>
             <span> See more about Yashashree </span>
             <FaArrowRightLong />
           </div> */}
@@ -57,7 +57,7 @@ const About = () => {
 
             return IconComponent ? (
               <a key={index} href={item.link} target='_blank' rel='noopener noreferrer'>
-                <IconComponent className={`${styles.social_icons} hover:text-grey-3`} />
+                <IconComponent className={`${styles.social_icons} hover:text-[#B7B7B7]`} />
               </a>
             ) : null;
           })}

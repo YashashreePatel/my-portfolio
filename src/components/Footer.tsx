@@ -10,37 +10,56 @@ import { Sections } from '@/data/Sections';
 
 const Footer = () => {
   return (
-    <div className='w-3/5 relative flex flex-col gap-4 m-auto items-center justify-center'>
-      <div className={`${styles.primary_dark} ${styles.hover_heading}`}>
-        Yashashree Patel
+    <div className={`relative w-full h-[100vh] pb-[100px] flex flex-col gap-16 justify-end items-center ${styles.footer_background}`}>
+      <div className='flex flex-col gap-2 items-center'>
+        <div className='font-inter font-light text-[18px] text-grey-1 leading-none'>
+          Want to create something amazing together?
+        </div>
+        <div className='font-outfit font-semibold text-[50px] text-grey-0 leading-none'>
+          Let's connect!
+        </div>
       </div>
-      <div className='flex flex-row gap-5 items-center text-grey-0'>
+      <div className='flex flex-row gap-5 items-center text-grey-1'>
         {SocialLinks.map((item, index) => {
           const IconComponent = FaIcons[item.name as keyof typeof FaIcons];
 
           return IconComponent ? (
             <a key={index} href={item.link} target='_blank' rel='noopener noreferrer'>
-              <IconComponent className={`${styles.social_icons} hover:text-grey-3`} />
+              <IconComponent className={`${styles.social_icons} hover:text-primary-3`} />
             </a>
           ) : null;
         })}
       </div>
-      <div className={`w-[550px] ${styles.grey_light} mt-2 text-center ${styles.body}`}>
-        Designed in
-        <span className={`${styles.primary_dark}`}> Figma </span>
-        and coded in
-        <span className={`${styles.primary_dark}`}> Visual Studio Code</span>
-        . Built using
-        <span className={`${styles.primary_dark}`}> Next.js</span>
-        , styled using
-        <span className={`${styles.primary_dark}`}> Tailwind CSS </span>
-        and deployed on
-        <span className={`${styles.primary_dark}`}> Vercel</span>
-        . The
-        <span className={`${styles.primary_dark}`}> Poppins</span>
-        typeface is used throughout, with the logo text featuring the
-        <span className={`${styles.primary_dark}`}> Unna </span>
-        typeface.
+      <div className='flex flex-col gap-2 items-center'>
+        <Image
+          width={40}
+          height={40}
+          src={`/images/logo/logo.png`}
+          alt='logo'
+          className='w-auto h-[30px]'
+        />
+        <div className='font-inter font-light text-[18px] text-grey-0 leading-none'>
+          Yashashree Patel
+        </div>
+      </div>
+      <div className={`w-1/2 font-inter font-light text-[12px] text-grey-2 text-center`}>
+        Designed in{' '}
+        <span className={`text-primary-0`}>Figma</span>
+        {' '}and coded in{' '}
+        <span className={`text-primary-0`}>Visual Studio Code</span>
+        . Built using{' '}
+        <span className={`text-primary-0`}>Next.js</span>
+        , styled using{' '}
+        <span className={`text-primary-0`}>Tailwind CSS</span>
+        {' '}and deployed on{' '}
+        <span className={`text-primary-0`}>Vercel</span>
+        . The{' '}
+        <span className={`text-primary-0`}>Inter</span>
+        {' '}and the{' '}
+        <span className={`text-primary-0`}>Outfit</span>
+        {' '}typefaces are used throughout, with the logo text featuring the{' '}
+        <span className={`text-primary-0`}>Playfair Display</span>
+        {' '}typeface.
       </div>
     </div>
   )
