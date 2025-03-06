@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { gsap } from 'gsap';
 import Image from 'next/image';
 import styles from '@/components/style.module.css';
+import Button from '@/components/Button';
 
 const About = () => {
   return (
@@ -15,6 +16,7 @@ const About = () => {
       <div className='font-outfit font-normal text-[50px] text-grey-0 text-left leading-none'>
         I blend design and code to create intuitive, high-performance web experiences that feel effortless for users.
       </div>
+      <Button link='/' text='Get in Touch' />
     </div>
   )
 }

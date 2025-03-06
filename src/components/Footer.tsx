@@ -19,13 +19,13 @@ const Footer = () => {
           Let's connect!
         </div>
       </div>
-      <div className='flex flex-row gap-5 items-center text-grey-1'>
+      <div className='flex flex-row gap-5 items-center text-grey-0'>
         {SocialLinks.map((item, index) => {
           const IconComponent = FaIcons[item.name as keyof typeof FaIcons];
 
           return IconComponent ? (
             <a key={index} href={item.link} target='_blank' rel='noopener noreferrer'>
-              <IconComponent className={`${styles.social_icons} hover:text-primary-3`} />
+              <IconComponent className={`${styles.social_icons} hover:text-primary-2`} />
             </a>
           ) : null;
         })}

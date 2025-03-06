@@ -8,7 +8,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 import Header from '@/components/Header';
-import Intro from '@/components/Intro';
+import Intro from '@/components/Home/Intro';
 import About from '@/components/Home/About';
 import Footer from '@/components/Footer';
 import styles from '@/components/style.module.css';

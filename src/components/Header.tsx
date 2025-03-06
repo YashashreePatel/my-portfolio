@@ -3,15 +3,12 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import styles from '@/components/style.module.css';
 
-import { Intro } from '@/data/Intro';
-import { SocialLinks } from '@/data/SocialLinks';
-
-import * as FaIcons from 'react-icons/fa6';
-import { Sections } from '@/data/Sections';
+import Menu from '@/components/Menu';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50); // Change when scrolling past 50px
@@ -30,11 +27,12 @@ const Header = () => {
         alt='logo'
         className='w-auto h-[30px]'
       />
-      <div className='flex flex-col'>
-        <div className={`h-[3px] w-full rounded-full ${isScrolled ? 'bg-grey-3' : 'bg-grey-1'}`}></div>
-        <div className={`justify-center ${isScrolled ? 'text-grey-0' : 'text-grey-5'}`}> menu </div>
-        <div className={`h-[3px] w-full rounded-full ${isScrolled ? 'bg-grey-3' : 'bg-grey-1'}`}></div>
+      <div className='flex flex-col' onClick={() => setIsMenuOpen(!isMenuOpen)}>
+        <div className={`h-[3px] w-full rounded-full ${isScrolled ? 'bg-grey-3' : 'bg-grey-1'} ${isMenuOpen ? 'rotate-45 translate-y-[5px]' : ''}`}></div>
+        <div className={`justify-center ${isScrolled ? 'text-grey-0' : 'text-grey-5'} ${isMenuOpen ? 'none' : 'inline'}`}> menu </div>
+        <div className={`h-[3px] w-full rounded-full ${isScrolled ? 'bg-grey-3' : 'bg-grey-1'} ${isMenuOpen ? '-rotate-45 -translate-y-[5px]' : ''}`}></div>
       </div>
+      {isMenuOpen && <Menu onClose={() => setIsMenuOpen(false)} />}
     </div>
   )
 }

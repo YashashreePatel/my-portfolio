@@ -4,7 +4,7 @@ const Intro = () => {
   return (
     <div id='intro' className='w-full h-[100vh] flex items-center justify-center'>
       <div className='px-[200px] flex flex-col gap-6 justify-center items-center'>
-        <div className='font-outfit text-[80px] text-grey-4 text-center leading-none tracking-[-0.025em]'>
+        <div className='font-outfit font-medium text-[80px] text-grey-3 text-center leading-none tracking-[-0.025em]'>
           Building experiences that{' '}
           <span className={`${styles.gradient_text} text-transparent`}>
             inspire

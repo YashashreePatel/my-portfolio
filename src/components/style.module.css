@@ -31,7 +31,8 @@
   height: 100%;
   top: 0;
   left: 50%;
-  background: #F5F2FE;
+  background: var(--color-grey-4);
+  opacity: 50%;
   overflow: hidden;
 }
 
@@ -43,7 +44,7 @@
   width: 100%;
   top: -50%;
   left: 0;
-  background: linear-gradient(to bottom, #FFFBEE 0%, #FFE399 75%, #FFCE4D 100%);
+  background: linear-gradient(to bottom, var(--color-grey-5) 0%, var(--color-secondary-3) 75%, var(--color-secondary-2) 100%);
   -webkit-animation: drop 7s 0s infinite;
   animation: lineDrop 7s 0s infinite;
   -webkit-animation-fill-mode: forwards;
@@ -53,11 +54,12 @@
 }
 
 .dark .line {
-  background: rgba(45, 45, 45, 1);
+  background: var(--color-grey-0);
+  opacity: 100%;
 }
 
 .dark .line::after {
-  background: linear-gradient(to bottom, #3B3B3B 0%, #686868 50%, #FFE399 100%);
+  background: linear-gradient(to bottom, var(--color-grey-0) 0%, var(--color-primary-0) 75%);
 }
 
 .line:nth-child(1) {
@@ -100,8 +102,7 @@
 
 /* landing screen */
 .gradient_text {
-  font-weight: 800;
-  background-image: linear-gradient(to right, #A183D4, #383366);
+  background-image: linear-gradient(to right, var(--color-primary-1), var(--color-secondary-1));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -123,6 +124,7 @@
 .footer_background {
   background-image: url('/images/footer_bg.png');
   background-size: cover;
+  /* background-attachment: fixed; */
 }
 
 .social_icons {
