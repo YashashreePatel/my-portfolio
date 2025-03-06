@@ -41,5 +41,5 @@ body {
   background-color: #7F76A5 !important;
 }
 .dark .swiper-pagination-bullet {
-  background-color: #FFCE4D !important;
+  background-color: var(--color-secondary-1) !important;
 }
