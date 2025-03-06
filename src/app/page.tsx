@@ -1,68 +1,86 @@
 'use client';
-import Cursor from '@/components/Cursor';
 import Navbar from '@/components/Header';
 import Image from 'next/image';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
+
+import Lenis from 'lenis';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 import Header from '@/components/Header';
-import About from '@/components/Content/About';
-import Experience from '@/components/Content/Experience';
-import Project from '@/components/Content/Project';
-import Testimonial from '@/components/Content/Testimonial';
+import Intro from '@/components/Home/Intro';
+import About from '@/components/Home/About';
 import Footer from '@/components/Footer';
-
 import styles from '@/components/style.module.css';
 
-import { Sections } from '@/data/Sections';
-
 export default function Home() {
-  const [currentSection, setCurrentSection] = useState('about');
-  const componentRef = useRef<HTMLDivElement | null>(null);
-
-  const handleScroll = () => {
-    if (componentRef.current) {
-      const scrollPosition = componentRef.current.scrollTop;
-      const offset = 250;
-      Sections.forEach(({ tag }) => {
-        const sectionElement = document.getElementById(tag);
-
-        if (
-          sectionElement &&
-          scrollPosition >= sectionElement.offsetTop - offset &&
-          scrollPosition < sectionElement.offsetTop + sectionElement.offsetHeight - offset
-        ) {
-          console.log('sectionElement.offsetTop - offset', sectionElement.offsetTop - offset)
-          setCurrentSection(tag);
-        }
-      });
-    }
-  };
+  const [isDark, setIsDark] = useState(true);
 
   useEffect(() => {
-    const componentElement = componentRef.current;
+    gsap.to(document.documentElement, {
+      duration: 1.0,
+      ease: 'power2.out',
+      css: {
+        '--bg-gradient': isDark
+          ? 'linear-gradient(to bottom right, rgba(15, 15, 15, 1), rgba(35, 35, 35, 1))'
+          : 'linear-gradient(to bottom right, rgba(245, 245, 245, 1), rgba(255, 255, 255, 1))',
+      },
+    });
+  }, [isDark]);
+  
+  useEffect(() => {
+    const lenis = new Lenis()
+    lenis.on('scroll', ScrollTrigger.update)
+    gsap.ticker.add((time: number) => {
+      lenis.raf(time * 1000)
+    })
+    gsap.ticker.lagSmoothing(0)
 
-    if (componentElement) {
-      componentElement.addEventListener('scroll', handleScroll);
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const triggerPoint = window.innerHeight * 0.5; // Halfway point of the viewport
+      setIsDark(scrollY < triggerPoint);
+    };
 
-      return () => {
-        componentElement.removeEventListener('scroll', handleScroll);
-      };
+    lenis.on('scroll', handleScroll);
+    // window.addEventListener('scroll', handleScroll);
+
+    function raf(time: number) {
+      lenis.raf(time)
+      requestAnimationFrame(raf)
     }
+    requestAnimationFrame(raf)
+    
+    return () => {
+      lenis.destroy();
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
+
+  useEffect(() => {
+    if (isDark) {
+      document.documentElement.classList.add('dark');
+      document.documentElement.classList.add(styles.dark);
+    } else {
+      document.documentElement.classList.remove('dark');
+      document.documentElement.classList.remove(styles.dark);
+    }
+  }, [isDark]);
+
   return (
-    <div className='2xl:w-[1250px] w-full h-full 2xl:m-auto relative 2xl:px-0 xl:px-20 lg:px-16 px-0 2xl:pt-[80px] pt-[50px]'>
-     {/* <Cursor /> */}
-      <div className={`${styles.lines} z-20`}>
-        <div className={`${styles.line}`}></div>
-        <div className={`${styles.line}`}></div>
-        <div className={`${styles.line}`}></div>
+    <div className={`main relative w-full h-auto ${styles.bg_transition} ${isDark ? 'dark' : ''} transition-all duration-500`}>
+      <div className='header relative'>
+        <div className={`${styles.lines} transition-all duration-500`}>
+          <div className={`${styles.line}`}></div>
+          <div className={`${styles.line}`}></div>
+          <div className={`${styles.line}`}></div>
+        </div>
+        <Header />
+        {/* <a href="/v1" className='z-40'>Go to version 1</a> */}
       </div>
-      <Header currentSection={currentSection} />
-      <div ref={componentRef} className={`w-full 2xl:max-h-[calc(100vh-190px)] lg:max-h-[calc(100vh-160px)] xs:max-h-[calc(100vh-140px)] relative flex flex-col gap-56 2xl:px-36 xl:px-28 px-16 lg:py-28 xs:py-16 z-30 ${styles.scrollable}`}>
+      <div className='content relative 2xl:w-[1250px] w-full'>
+        <Intro />
         <About />
-        <Experience />
-        <Project />
-        <Testimonial />
         <Footer />
       </div>
     </div>

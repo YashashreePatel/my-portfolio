@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styles from '@/components/style.module.css';
+import styles from '@/components/v1/style.module.css';
 
 import { Experiences } from '@/data/Experiences';
 import { IExperience } from '@/types/IExperience';
@@ -12,7 +12,7 @@ type ExperienceCardProps = {
 
 const ExperienceCard = ({ experience }: ExperienceCardProps) => {
   return (
-    <div className={`flex flex-col gap-4 justify-center bg-grey-5 dark:bg-grey-dark hover:shadow-custom dark:shadow-dark-custom ${styles.exp_card}`}>
+    <div className={`flex flex-col gap-4 justify-center bg-[#FFFFFF] dark:bg-[#3A3A3A] hover:shadow-custom dark:shadow-dark-custom ${styles.exp_card}`}>
       <div className={`w-full flex flex-row gap-4 justify-start items-start`}>
         <div className='flex-1 flex flex-col 2xl:gap-2 gap-1 items-start text-left'>
           <div className={`${styles.grey_dark} ${styles.card_title}`}>

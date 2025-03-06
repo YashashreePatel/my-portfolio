@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import styles from '@/components/style.module.css';
+import styles from '@/components/v1/style.module.css';
 
 import { Projects } from '@/data/Projects';
 import { IProject } from '@/types/IProject';
@@ -12,7 +12,7 @@ type ProjectCardProps = {
 
 const ProjectCard = ({ project }: ProjectCardProps) => {
   return (
-    <div className={`w-full flex flex-col gap-4 bg-grey-5 dark:bg-grey-dark items-start justify-start hover:shadow-custom dark:shadow-dark-custom ${styles.project_card}`}>
+    <div className={`w-full flex flex-col gap-4 bg-[#FFFFFF] dark:bg-[#3A3A3A] items-start justify-start hover:shadow-custom dark:shadow-dark-custom ${styles.project_card}`}>
       <div className='w-full h-[250px] overflow-hidden rounded-t-[3px]'>
         <Image
           width={400}
@@ -29,7 +29,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
           </div>
           <div className={`text-right ${styles.grey_dark}`}>
             <a href={project.project_link} target='_blank' rel='noopener noreferrer'>
-              <FaGithub className={`${styles.social_icons} hover:text-grey-3`} />
+              <FaGithub className={`${styles.social_icons} hover:text-[#B7B7B7]`} />
             </a>
           </div>
         </div>
@@ -43,7 +43,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
 const Project = () => {
   return (
     <div id='projects' className='w-full relative flex flex-col gap-10 m-auto items-start justify-start'>
-      {/* <div className={`w-full text-primary-2 ${styles.section_heading}`}> Projects </div> */}
+      {/* <div className={`w-full text-[#7F76A5] ${styles.section_heading}`}> Projects </div> */}
       <div className='lg:w-2/3 xs:w-full flex flex-col gap-4 lg:items-start xs:items-center justify-center lg:text-left xs:text-center'>
         <div className={`${styles.primary_light} ${styles.heading}`}>
           What I have been <span className={`${styles.primary_dark}`}>Building</span>

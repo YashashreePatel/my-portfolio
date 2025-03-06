@@ -25,7 +25,7 @@ const Navbar = ({ currentSection }: NavbarProps) => {
 
   return (
     <div className='w-full'>
-      <ul className='w-full flex flex-row gap-10 text-primary-0'>
+      <ul className='w-full flex flex-row gap-10 text-[#2F2A47]'>
         {Sections.map((item, index) =>
           <li key={index} className={`
           ${currentSection === item.tag ? styles.menu_item_active : ''}

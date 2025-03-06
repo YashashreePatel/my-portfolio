@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import Image from 'next/image';
-import styles from '@/components/style.module.css';
+import styles from '@/components/v1/style.module.css';
 
 import { Testimonials } from '@/data/Testimonials';
 import { ITestimonail } from '@/types/ITestimonial';
@@ -16,9 +16,9 @@ type TestimonialCardProps = {
 
 const TestimonialCard = ({ testimonial }: TestimonialCardProps) => {
   return (
-    <div className={`w-full flex flex-row gap-[80px] pr-[40px] rounded-[3px] bg-grey-5 dark:bg-grey-0 items-center ${styles.testi_card}`}>
+    <div className={`w-full flex flex-row gap-[80px] pr-[40px] rounded-[3px] bg-[#FFFFFF] dark:bg-[#3B3B3B] items-center ${styles.testi_card}`}>
       <div className={`w-4/5 h-[150px] relative flex justify-center items-center rounded-[3px] ${styles.testi_content_card}`}>
-        <div className={`pl-[40px] pr-[80px] text-center text-grey-1 dark:text-grey-2 ${styles.body}`}>
+        <div className={`pl-[40px] pr-[80px] text-center text-[#686868] dark:text-[#919191] ${styles.body}`}>
           {testimonial.content}
         </div>
         <Image
@@ -63,7 +63,7 @@ const Testimonial = () => {
           disableOnInteraction: false,
         }}
         modules={[Pagination, Autoplay]}
-        className="w-full !p-[40px]"
+        className='w-full !p-[40px]'
       >
         {Testimonials.map((item, index) =>
           <SwiperSlide key={index}>
