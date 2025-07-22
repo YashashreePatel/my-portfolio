@@ -10,13 +10,13 @@ import { Sections } from '@/data/Sections';
 
 const Footer = () => {
   return (
-    <div className={`relative w-full h-[100vh] pb-[100px] flex flex-col gap-16 justify-end items-center ${styles.footer_background}`}>
+    <div className={`relative w-full h-screen pb-[100px] flex flex-col gap-16 justify-end items-center ${styles.footer_background}`}>
       <div className='flex flex-col gap-2 items-center'>
         <div className='font-inter font-light text-[18px] text-grey-1 leading-none'>
           Want to create something amazing together?
         </div>
         <div className='font-outfit font-semibold text-[50px] text-grey-0 leading-none'>
-          Let's connect!
+          Let&apos;s connect!
         </div>
       </div>
       <div className='flex flex-row gap-5 items-center text-grey-0'>
