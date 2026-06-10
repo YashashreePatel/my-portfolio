@@ -2,6 +2,30 @@ import { IExperience } from '@/types/IExperience'
 
 export const Experiences: IExperience[] = [
   {
+    title: 'Software Engineer',
+    company: 'Intuit via Cogniify',
+    company_website: 'https://www.intuit.com/',
+    duration: 'June 2026 - Present',
+    description: '',
+    tech_stack: [],
+  },
+  {
+    title: 'Software Engineer',
+    company: 'Upwork',
+    company_website: 'https://www.upwork.com/',
+    duration: 'Aug 2025 - May 2026',
+    description: 'Architected and deployed APEX, an AI-powered execution platform with 11 Kubernetes services for incident triage workflows. Built high-throughput FastAPI and Node.js services, real-time SSE/WebSocket event processing, PostgreSQL and Redis coordination, external Jira/GitHub/Sourcegraph/Elasticsearch integrations, and observability with Prometheus, Grafana, Loki, and Jaeger.',
+    tech_stack: ['FastAPI', 'Node.js', 'Kubernetes', 'Helm', 'PostgreSQL', 'Redis', 'WebSockets', 'Prometheus', 'Grafana'],
+  },
+  {
+    title: 'Software Engineer',
+    company: 'Humanitarians AI, Northeastern University',
+    company_website: 'https://www.northeastern.edu/',
+    duration: 'Jan 2025 - Jul 2025',
+    description: 'Delivered a Super Agent Visualizer with Next.js, TypeScript, and React Flow for real-time editing of complex multi-agent JSON structures. Built secure multi-tenant backend systems with FastAPI, Supabase, Aurora PostgreSQL, AWS Lambda, Cognito, ECS/Fargate, and load-balanced zero-downtime deployments.',
+    tech_stack: ['Next.js', 'TypeScript', 'React Flow', 'FastAPI', 'Supabase', 'AWS Lambda', 'Cognito', 'ECS/Fargate'],
+  },
+  {
     title: 'Software Engineer Co-op',
     company: 'AdsGency AI',
     company_website: 'https://adsgency.ai/',

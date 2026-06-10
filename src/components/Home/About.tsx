@@ -15,11 +15,11 @@ const About = () => {
         <div className='w-1/2 font-inter font-light italic text-grey-2'>
           this is me.
         </div>
-        <a href='/this-is-me' className='w-1/2 flex flex-row gap-[3px] items-center justify-end font-outfit font-medium text-secondary-1 hover:text-secondary-3 transition-all duration-300'>
+        <a href='/this-is-me' className='w-1/2 flex flex-row gap-[3px] items-center justify-end font-inter font-medium text-secondary-1 hover:text-secondary-3 transition-all duration-300'>
           <div> know more about me </div> <FiArrowUpRight />
         </a>
       </div>
-      <div className='font-outfit font-normal text-[50px] text-grey-0 text-left leading-none'>
+      <div className='font-inter font-normal text-[50px] text-grey-0 text-left leading-none'>
         I blend design and code to create intuitive, high-performance web experiences that feel effortless for users.
       </div>
       <Button link='/' text='Get in Touch' />

@@ -1,68 +1,62 @@
 'use client';
-import Image from 'next/image';
-import styles from '@/components/style.module.css';
 
-import { Intro } from '@/data/Intro';
-import { SocialLinks } from '@/data/SocialLinks';
-
+import { FiArrowUpRight } from 'react-icons/fi';
 import * as FaIcons from 'react-icons/fa6';
-import { Sections } from '@/data/Sections';
+
+import LogoMark from '@/components/LogoMark';
+import SectionLabel from '@/components/SectionLabel';
+import { SocialLinks } from '@/data/SocialLinks';
+import styles from '@/components/style.module.css';
 
 const Footer = () => {
   return (
-    <div className={`relative w-full h-screen pb-[100px] flex flex-col gap-16 justify-end items-center ${styles.footer_background}`}>
-      <div className='flex flex-col gap-2 items-center'>
-        <div className='font-inter font-light text-[18px] text-grey-1 leading-none'>
-          Want to create something amazing together?
+    <footer id='contact' className={`relative flex min-h-[80vh] snap-start items-end overflow-hidden px-5 py-16 sm:px-8 lg:h-screen lg:px-10 ${styles.footer_background}`}>
+      <div className='footer-wash'></div>
+      <div className='relative mx-auto grid w-full max-w-7xl gap-10 lg:grid-cols-[1fr_0.8fr] lg:items-end'>
+        <div className='max-w-3xl'>
+          <SectionLabel>Contact</SectionLabel>
+          <h2 className='type-section-heading mt-4 text-grey-0'>
+            Let&apos;s build reliable, intelligent systems together.
+          </h2>
+          <p className='type-body-base mt-5 text-grey-1'>
+            I&apos;m open to software engineering roles where backend architecture, AI platforms, cloud systems, and thoughtful product engineering meet.
+          </p>
+          <a
+            href='mailto:yashashreepatel9@gmail.com'
+            className='primary-button mt-8 max-w-full flex-wrap break-all'
+          >
+            yashashreepatel9@gmail.com
+            <FiArrowUpRight />
+          </a>
         </div>
-        <div className='font-outfit font-semibold text-[50px] text-grey-0 leading-none'>
-          Let&apos;s connect!
-        </div>
-      </div>
-      <div className='flex flex-row gap-5 items-center text-grey-0'>
-        {SocialLinks.map((item, index) => {
-          const IconComponent = FaIcons[item.name as keyof typeof FaIcons];
 
-          return IconComponent ? (
-            <a key={index} href={item.link} target='_blank' rel='noopener noreferrer'>
-              <IconComponent className={`${styles.social_icons} hover:text-primary-2`} />
-            </a>
-          ) : null;
-        })}
-      </div>
-      <div className='flex flex-col gap-2 items-center'>
-        <Image
-          width={40}
-          height={40}
-          src={`/images/logo/logo.png`}
-          alt='logo'
-          className='w-auto h-[30px]'
-        />
-        <div className='font-inter font-light text-[18px] text-grey-0 leading-none'>
-          Yashashree Patel
+        <div className='flex flex-col gap-8 lg:items-end'>
+          <LogoMark showWordmark />
+          <div className='flex flex-wrap gap-4 text-grey-0'>
+            {SocialLinks.map((item) => {
+              const IconComponent = FaIcons[item.name as keyof typeof FaIcons];
+
+              return IconComponent ? (
+                <a
+                  key={item.link}
+                  href={item.link}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  aria-label={item.name}
+                  className='icon-button h-11 w-11'
+                >
+                  <IconComponent />
+                </a>
+              ) : null;
+            })}
+          </div>
+          <div className='type-nav text-grey-2'>
+            Designed and built with Next.js, Tailwind CSS, and a little systems thinking.
+          </div>
         </div>
       </div>
-      <div className={`w-1/2 font-inter font-light text-[12px] text-grey-2 text-center`}>
-        Designed in{' '}
-        <span className={`text-primary-0`}>Figma</span>
-        {' '}and coded in{' '}
-        <span className={`text-primary-0`}>Visual Studio Code</span>
-        . Built using{' '}
-        <span className={`text-primary-0`}>Next.js</span>
-        , styled using{' '}
-        <span className={`text-primary-0`}>Tailwind CSS</span>
-        {' '}and deployed on{' '}
-        <span className={`text-primary-0`}>Vercel</span>
-        . The{' '}
-        <span className={`text-primary-0`}>Inter</span>
-        {' '}and the{' '}
-        <span className={`text-primary-0`}>Outfit</span>
-        {' '}typefaces are used throughout, with the logo text featuring the{' '}
-        <span className={`text-primary-0`}>Playfair Display</span>
-        {' '}typeface.
-      </div>
-    </div>
-  )
-}
+    </footer>
+  );
+};
 
 export default Footer;

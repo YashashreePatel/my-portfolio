@@ -1,14 +1,7 @@
 import type { Metadata } from 'next';
-import { Outfit } from "next/font/google";
 import { Inter } from 'next/font/google';
 import './globals.css';
 import styles from '@/components/style.module.css';
-
-const outfit = Outfit({
-  variable: "--font-outfit",
-  subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"]
-});
 
 const inter = Inter({
   variable: "--font-inter",
@@ -34,7 +27,7 @@ export default function RootLayout({
         {/* <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" /> */}
       </head>
-      <body className={`${outfit.variable} ${inter.variable}`}>
+      <body className={`${inter.variable}`}>
         {children}
       </body>
     </html>

@@ -10,6 +10,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        inter: ['var(--font-inter)', 'sans-serif'],
+      },
       screens: {
         'xs': '344px',
         'sm': '640px',
@@ -51,6 +54,13 @@ const config: Config = {
       boxShadow: {
         'custom': '0 0 40px 5px #ECECEC',
         'dark-custom': '0 0 40px 5px rgba(25, 25, 25, 1)',
+        'surface': '0 18px 60px rgba(26,26,26,0.04)',
+        'surface-strong': '0 18px 60px rgba(26,26,26,0.08)',
+        'photo': '0 24px 80px rgba(26,26,26,0.08)',
+        'photo-strong': '0 28px 90px rgba(26,26,26,0.14)',
+        'chip': '0 16px 50px rgba(26,26,26,0.04)',
+        'float': '0 18px 55px rgba(26,26,26,0.10)',
+        'frame-inset': 'inset 0 0 120px rgba(26,26,26,0.32)',
       },
     },
   },
