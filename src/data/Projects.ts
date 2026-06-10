@@ -50,6 +50,18 @@ export const Projects: IProject[] = [
     image_source: '',
   },
   {
+    name: 'Portfolio v1',
+    completion_date: '2024',
+    description: 'Earlier portfolio version preserved as a legacy view, showing the original visual direction, project cards, testimonials, and career story before the current redesign.',
+    problem: 'The older portfolio still captured a useful snapshot of my design and engineering direction.',
+    built: 'A legacy portfolio route kept inside the current Next.js site so the previous version remains accessible.',
+    impact: 'Preserves the evolution of the portfolio while keeping the current version focused and refreshed.',
+    tech_stack: ['Next.js', 'React', 'Tailwind CSS', 'Portfolio'],
+    project_link: '/v1',
+    image: '/images/project/userhub.png',
+    image_source: '',
+  },
+  {
     name: 'Cloud-Based User Management System',
     completion_date: 'April 2024',
     description: 'Cloud-native user management system with secure scalable deployments, Terraform infrastructure, CI/CD on GCP, and 80% faster provisioning.',

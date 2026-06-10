@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 import styles from '@/components/v1/style.module.css';
 
@@ -10,11 +10,6 @@ import { FaArrowRightLong } from 'react-icons/fa6';
 
 const About = () => {
   const [isHovered, setIsHovered] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  useEffect(() => {
-    setIsDarkMode(document.documentElement.classList.contains('dark'));
-  }, []);
 
   return (
     <div id='about' className='w-full flex lg:flex-row xs:flex-col gap-10 items-center justify-center'>

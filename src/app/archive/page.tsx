@@ -58,6 +58,15 @@ const workProjects: ArchiveProject[] = [
     description: 'Search optimization system focused on improving result quality and latency through Elasticsearch indexing, ranking strategies, Redis caching, and RabbitMQ pipelines.',
     builtWith: ['Node.js', 'Redis', 'RabbitMQ', 'Elasticsearch', 'REST APIs'],
   },
+  {
+    year: '2024',
+    source: 'Personal',
+    title: 'Portfolio v1',
+    description: 'Earlier portfolio version preserved as a legacy view, showing the original visual direction, project cards, testimonials, and career story before the current redesign.',
+    builtWith: ['Next.js', 'React', 'Tailwind CSS', 'Portfolio'],
+    link: '/v1',
+    linkLabel: 'View',
+  },
 ];
 
 const repoMeta: Record<string, RepoMeta> = {
@@ -197,6 +206,12 @@ const getRepoSource = (repo: GitHubRepo): ArchiveProject['source'] => {
   return 'GitHub';
 };
 
+const getLinkProps = (link: string) => (
+  link.startsWith('/')
+    ? {}
+    : { target: '_blank', rel: 'noopener noreferrer' }
+);
+
 const mapRepoToArchiveProject = (repo: GitHubRepo): ArchiveProject => {
   const meta = repoMeta[repo.name];
   const link = getProjectLink(repo, meta);
@@ -272,7 +287,7 @@ const ProjectArchive = async () => {
                 </div>
                 <div className='mt-4'>
                   {project.link ? (
-                    <a href={project.link} target='_blank' rel='noopener noreferrer' className='group inline-flex items-start gap-2'>
+                    <a href={project.link} {...getLinkProps(project.link)} className='group inline-flex items-start gap-2'>
                       <h2 className='type-card-heading-sm text-grey-0 transition-colors duration-200 group-hover:text-secondary-1'>{project.title}</h2>
                       <FiArrowUpRight className='mt-1 shrink-0 text-grey-1 transition-colors duration-200 group-hover:text-secondary-1' />
                     </a>
@@ -290,7 +305,7 @@ const ProjectArchive = async () => {
                 </div>
                 <div className='mt-5'>
                   {project.link ? (
-                    <a href={project.link} target='_blank' rel='noopener noreferrer' className='text-link'>
+                    <a href={project.link} {...getLinkProps(project.link)} className='text-link'>
                       {project.linkLabel}
                       <FiArrowUpRight />
                     </a>
@@ -332,7 +347,7 @@ const ProjectArchive = async () => {
                     </td>
                     <td className='py-6 align-top'>
                       {project.link ? (
-                        <a href={project.link} target='_blank' rel='noopener noreferrer' className='type-card-heading-sm text-grey-0 transition-colors duration-200 group-hover:text-secondary-1'>
+                        <a href={project.link} {...getLinkProps(project.link)} className='type-card-heading-sm text-grey-0 transition-colors duration-200 group-hover:text-secondary-1'>
                           {project.title}
                         </a>
                       ) : (
@@ -351,7 +366,7 @@ const ProjectArchive = async () => {
                     </td>
                     <td className='py-6 align-top'>
                       {project.link ? (
-                        <a href={project.link} target='_blank' rel='noopener noreferrer' className='text-link text-grey-1'>
+                        <a href={project.link} {...getLinkProps(project.link)} className='text-link text-grey-1'>
                           {project.linkLabel}
                           <FiArrowUpRight />
                         </a>
