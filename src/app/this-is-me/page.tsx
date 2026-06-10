@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import { FiAperture, FiChevronDown, FiCoffee, FiImage, FiSun } from 'react-icons/fi';
+import { FiAperture, FiChevronDown, FiCoffee, FiSun } from 'react-icons/fi';
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -10,8 +10,6 @@ import SectionLabel from '@/components/SectionLabel';
 import { AboutMePhoto, AboutMePhotos } from '@/data/AboutMe';
 import { useReveal } from '@/hooks/useReveal';
 import { useSmoothScroll } from '@/hooks/useSmoothScroll';
-
-const SHOW_MOMENTS = false;
 
 const PhotoTile = ({
   photo,
@@ -84,27 +82,8 @@ const SectionIntro = ({
 const introTags = [
   { label: 'painting', icon: <FiAperture /> },
   { label: 'sunsets', icon: <FiSun /> },
-  { label: 'moments', icon: <FiImage />, hidden: !SHOW_MOMENTS },
   { label: 'cooking', icon: <FiCoffee /> },
 ];
-
-const aboutIntro = SHOW_MOMENTS
-  ? {
-      title: 'Beyond engineering, I stay close to color, craft, and the details that make work feel human.',
-      body: 'My creative life gives me a quieter way to study patience, composition, rhythm, and care. Painting, cooking, travel, and everyday observation shape how I think, how I make decisions, and how I bring intention into the systems I build.',
-    }
-  : {
-      title: 'Beyond engineering, I stay close to color, craft, and the care behind making things.',
-      body: 'Painting teaches me patience and composition. Sunsets keep me attentive to light, transition, and restraint. Cooking reminds me that timing, texture, and care can change the whole experience.',
-    };
-
-const sunsetBody = SHOW_MOMENTS
-  ? 'Sunsets are a quiet reminder that the most memorable moments are often temporary. I am drawn to the way color shifts slowly, how atmosphere changes the entire frame, and how much can be communicated without excess.'
-  : 'Sunsets are a quiet reminder that the most memorable light is often temporary. I am drawn to the way color shifts slowly, how atmosphere changes the entire frame, and how much can be communicated without excess.';
-
-const connectionBody = SHOW_MOMENTS
-  ? 'These parts of my life shape how I work: painting strengthens patience, cooking reinforces care, sunsets sharpen my sense of color and atmosphere, and travel reminds me to notice the context around every decision.'
-  : 'These parts of my life shape how I work: painting strengthens patience, cooking reinforces care, and sunsets sharpen my sense of color, atmosphere, and timing.';
 
 export default function ThisIsMe() {
   const [coverProgress, setCoverProgress] = useState(0);
@@ -151,31 +130,28 @@ export default function ThisIsMe() {
         aria-label='About me cover image'
       >
         <div
-          className='cover-image-motion absolute inset-0 bg-cover bg-center md:bg-fixed'
+          className='absolute inset-0 scale-[1.04] bg-cover bg-center md:bg-fixed motion-safe:animate-[cover-drift_18s_ease-in-out_infinite_alternate] will-change-[opacity]'
           style={{
             backgroundImage: "url('/images/about-me/moments/moment-liberty-back.jpg')",
             opacity: 1 - coverProgress,
-            transform: `scale(${1.04 + coverProgress * 0.08}) translate3d(0, ${coverProgress * -24}px, 0)`,
           }}
         />
         <div className='cover-overlay' style={{ opacity: 1 - coverProgress }} />
         <div className='cover-frame' style={{ opacity: 1 - coverProgress }} />
         <div
-          className='cover-caption cover-caption-motion'
+          className='cover-caption'
           style={{ opacity: Math.max(0, 1 - coverProgress * 1.4) }}
         >
-          <span className='type-label text-white/90'>
-            {SHOW_MOMENTS ? 'Moments outside the code' : 'Outside the code'}
-          </span>
+          <span className='type-label text-white/90'>Moments outside the code</span>
         </div>
         <a
           href='#about-me-intro'
-          className='cover-scroll-cue absolute bottom-10 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-3 text-grey-5 will-change-[opacity] sm:bottom-12'
+          className='absolute bottom-10 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-3 text-grey-5 will-change-[opacity] sm:bottom-12'
           style={{ opacity: Math.max(0, 1 - coverProgress * 1.8) }}
           aria-label='Scroll to about me intro'
         >
           <span className='type-nav text-grey-5'>Scroll down</span>
-          <span className='flex h-10 w-10 items-center justify-center rounded-full border border-grey-5/70 bg-grey-0/15 text-[22px] backdrop-blur'>
+          <span className='flex h-10 w-10 animate-bounce items-center justify-center rounded-full border border-grey-5/70 bg-grey-0/15 text-[22px] backdrop-blur'>
             <FiChevronDown aria-hidden='true' />
           </span>
         </a>
@@ -189,13 +165,13 @@ export default function ThisIsMe() {
           <div className='max-w-5xl' data-reveal>
             <SectionLabel>This is me</SectionLabel>
             <h1 className='type-hero mt-4 text-grey-0'>
-              {aboutIntro.title}
+              Beyond engineering, I stay close to color, craft, and the details that make work feel human.
             </h1>
             <p className='type-body-lg mt-6 max-w-4xl text-grey-1'>
-              {aboutIntro.body}
+              My creative life gives me a quieter way to study patience, composition, rhythm, and care. Painting, cooking, sunsets, and everyday observation shape how I think, how I make decisions, and how I bring intention into the systems I build.
             </p>
             <div className='mt-9 flex flex-wrap gap-3'>
-              {introTags.filter((tag) => !tag.hidden).map((tag) => (
+              {introTags.map((tag) => (
                 <span
                   key={tag.label}
                   className='editorial-chip type-tag'
@@ -231,7 +207,7 @@ export default function ThisIsMe() {
           <SectionIntro
             label='Sunsets'
             title='A study in light, transition, and restraint.'
-            body={sunsetBody}
+            body='Sunsets are a quiet reminder that the most memorable light is often temporary. I am drawn to the way color shifts slowly, how atmosphere changes the entire frame, and how much can be communicated without excess.'
             note='Color, atmosphere, and the discipline of noticing what is changing.'
           />
 
@@ -251,23 +227,6 @@ export default function ThisIsMe() {
           <MasonryWall photos={AboutMePhotos.painting} columns='lg:columns-3' />
         </div>
       </section>
-
-      {SHOW_MOMENTS && (
-        <section className='section-moments px-5 py-24 sm:px-8 lg:px-10 lg:py-40'>
-          <div className='mx-auto w-full max-w-7xl'>
-            <div className='mb-12 max-w-3xl' data-reveal>
-              <SectionLabel>Moments</SectionLabel>
-              <h2 className='type-section-heading-sm mt-4 text-grey-0'>
-                Personal archives from places, pauses, and passing details.
-              </h2>
-              <p className='type-body-base mt-5 max-w-2xl text-grey-1'>
-                I keep certain photographs because they hold more than the scene itself: a sense of place, a small shift in mood, or a detail that would be easy to overlook once the moment has passed.
-              </p>
-            </div>
-            <MasonryWall photos={AboutMePhotos.moments} columns='lg:columns-4' />
-          </div>
-        </section>
-      )}
 
       <section className='section-cooking px-5 py-24 sm:px-8 lg:px-10 lg:py-40'>
         <div className='mx-auto grid w-full max-w-7xl gap-10 lg:grid-cols-[1fr_0.38fr] lg:items-start lg:gap-16'>
@@ -290,7 +249,7 @@ export default function ThisIsMe() {
           <div className='max-w-4xl border-l border-secondary-3 pl-6' data-reveal>
             <div className='type-label text-secondary-1'>How it connects</div>
             <p className='type-body-base mt-4 text-grey-1'>
-              {connectionBody}
+              These parts of my life shape how I work: painting strengthens patience, cooking reinforces care, and sunsets sharpen my sense of color, atmosphere, and timing.
             </p>
           </div>
         </div>
