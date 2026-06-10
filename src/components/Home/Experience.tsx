@@ -30,11 +30,6 @@ const ExperienceCard = ({ experience }: ExperienceCardProps) => {
           {experience.duration}
         </div>
       </div>
-      <div className='flex flex-wrap gap-2'>
-        {experience.tech_stack.map((skill, index) =>
-          <div key={index} className={`${styles.skill_badge}`}> {skill} </div>
-        )}
-      </div>
     </div>
   )
 }

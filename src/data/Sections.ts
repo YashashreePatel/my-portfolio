@@ -4,6 +4,14 @@ export const Sections = [
     tag: 'about',
   },
   {
+    name: 'References',
+    tag: 'testimonials',
+  },
+  {
+    name: 'Strengths',
+    tag: 'strengths',
+  },
+  {
     name: 'Experience',
     tag: 'experience',
   },
@@ -12,7 +20,7 @@ export const Sections = [
     tag: 'projects',
   },
   {
-    name: 'Testimonials',
-    tag: 'testimonials',
+    name: 'Contact',
+    tag: 'contact',
   },
 ]

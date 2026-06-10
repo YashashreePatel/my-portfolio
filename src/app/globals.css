@@ -20,16 +20,538 @@ html {
   width: 100%;
   height: 100vh;
   scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
 }
 
 body {
   width: 100%;
   height: 100vh;
   position: relative;
+  background: var(--color-grey-5);
   color: rgb(var(--foreground-hex));
   font-family: 'Poppins', sans-serif;
   cursor: default;
   font-size: 16px;
+}
+
+::selection {
+  background: rgba(198, 174, 235, 0.55);
+  color: var(--color-grey-0);
+}
+
+::-moz-selection {
+  background: rgba(198, 174, 235, 0.55);
+  color: var(--color-grey-0);
+}
+
+@keyframes cover-drift {
+  from {
+    transform: scale(1.04) translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: scale(1.08) translate3d(0, -1.5%, 0);
+  }
+}
+
+@keyframes cover-caption-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -6px, 0);
+  }
+}
+
+@keyframes cover-scroll-breathe {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+
+  50% {
+    translate: 0 5px;
+  }
+}
+
+@keyframes play-card-float-a {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+
+  50% {
+    translate: 0 10px;
+  }
+}
+
+@keyframes play-card-float-b {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+
+  50% {
+    translate: 0 -10px;
+  }
+}
+
+@keyframes capability-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+[data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 22px, 0);
+  transition:
+    opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .play-card-float-a,
+  .play-card-float-b,
+  .cover-caption-motion,
+  .cover-scroll-cue,
+  .capability-marquee,
+  .capability-marquee-reverse {
+    animation: none;
+  }
+}
+
+@layer components {
+  .section-label {
+    @apply flex items-center gap-3;
+  }
+
+  .section-label-rule {
+    @apply h-px w-10 bg-secondary-3 dark:bg-secondary-4;
+  }
+
+  .page-warm {
+    @apply bg-grey-5 text-grey-0;
+  }
+
+  .page-lab {
+    @apply bg-grey-5 text-grey-0;
+  }
+
+  .section-divider {
+    @apply border-t border-grey-4/80;
+  }
+
+  .section-paper {
+    @apply relative;
+  }
+
+  .section-sunset {
+    @apply relative;
+  }
+
+  .section-painting {
+    @apply relative;
+  }
+
+  .section-moments {
+    @apply relative;
+  }
+
+  .section-cooking {
+    @apply relative;
+  }
+
+  .surface-card {
+    @apply rounded-[8px] border border-grey-4/80 bg-grey-5/75 shadow-surface backdrop-blur;
+    transition:
+      border-color 240ms ease,
+      box-shadow 240ms ease,
+      transform 240ms ease,
+      background-color 240ms ease;
+  }
+
+  .surface-card-hover {
+    @apply hover:border-secondary-3 hover:shadow-surface-strong;
+  }
+
+  .surface-card-hover:hover {
+    transform: translate3d(0, -4px, 0);
+  }
+
+  .surface-panel {
+    @apply rounded-[8px] border border-grey-4 bg-grey-5/70 shadow-surface backdrop-blur;
+  }
+
+  .surface-photo {
+    @apply overflow-hidden rounded-[8px] bg-grey-4 shadow-photo;
+    transition: box-shadow 260ms ease;
+  }
+
+  .surface-photo-strong {
+    @apply overflow-hidden rounded-[8px] bg-grey-4 shadow-photo-strong;
+    transition: box-shadow 260ms ease;
+  }
+
+  .editorial-chip {
+    @apply inline-flex items-center gap-2 rounded-full border border-grey-4 bg-grey-5/55 px-4 py-2 text-grey-1 shadow-chip backdrop-blur;
+    transition:
+      border-color 200ms ease,
+      background-color 200ms ease,
+      transform 200ms ease;
+  }
+
+  .editorial-chip:hover {
+    transform: translate3d(0, -1px, 0);
+  }
+
+  .editorial-note {
+    @apply border-l border-secondary-3 pl-4 text-grey-1;
+  }
+
+  .archive-note {
+    @apply mt-3 border-l border-secondary-3/70 pl-3;
+    font-family: 'Bradley Hand', 'Segoe Print', 'Comic Sans MS', cursive;
+  }
+
+  .archive-note-meta {
+    @apply text-[0.95rem] font-normal leading-5 text-secondary-1;
+  }
+
+  .archive-note-title {
+    @apply mt-1 text-[1.05rem] font-normal leading-5 text-grey-1;
+  }
+
+  .archive-note-body {
+    @apply mt-1 text-[0.95rem] font-normal leading-5 text-grey-1;
+  }
+
+  .editorial-frame {
+    @apply rounded-[8px] border border-secondary-4/70;
+  }
+
+  .cover-frame {
+    @apply pointer-events-none absolute inset-4 border border-white/25 shadow-frame-inset sm:inset-6;
+  }
+
+  .cover-image-motion {
+    transform-origin: center;
+    transition: opacity 120ms linear;
+    will-change: opacity, transform;
+  }
+
+  .cover-overlay {
+    @apply pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(26,26,26,0.10)_0%,rgba(26,26,26,0.02)_46%,rgba(26,26,26,0.42)_100%)];
+    will-change: opacity;
+  }
+
+  .cover-caption {
+    @apply absolute bottom-24 left-6 z-10 border-l border-white/45 pl-4 text-white/90 sm:bottom-28 sm:left-10;
+  }
+
+  .cover-caption-motion {
+    animation: cover-caption-float 5.6s ease-in-out infinite;
+  }
+
+  .cover-scroll-cue {
+    animation: cover-scroll-breathe 2.4s ease-in-out infinite;
+  }
+
+  .floating-caption {
+    @apply rounded-[8px] border border-grey-4 bg-grey-5/90 px-3 py-2 shadow-float backdrop-blur;
+    transition:
+      border-color 220ms ease,
+      box-shadow 220ms ease,
+      transform 220ms ease;
+  }
+
+  .floating-caption:hover {
+    transform: translate3d(0, -2px, 0);
+  }
+
+  .handwritten-caption {
+    font-family: 'Bradley Hand', 'Segoe Print', 'Comic Sans MS', cursive;
+    @apply text-[1.00rem] font-normal leading-none tracking-normal text-secondary-1 sm:text-[1.15rem];
+  }
+
+  .footer-wash {
+    @apply absolute inset-0 bg-grey-5/20;
+  }
+
+  .chrome-surface {
+    @apply border-grey-4/80 bg-grey-5/85 shadow-surface-strong backdrop-blur dark:border-grey-1/80 dark:bg-grey-0/80;
+  }
+
+  .icon-button {
+    @apply inline-flex items-center justify-center rounded-[6px] border border-grey-4 bg-grey-5/70 hover:border-secondary-1 hover:bg-secondary-1 hover:text-grey-5;
+    transition:
+      border-color 200ms ease,
+      background-color 200ms ease,
+      color 200ms ease,
+      transform 200ms ease;
+  }
+
+  .icon-button:hover {
+    transform: translate3d(0, -2px, 0);
+  }
+
+  .icon-tile {
+    @apply inline-flex h-10 w-10 items-center justify-center rounded-[6px] bg-primary-5 text-primary-0;
+  }
+
+  .play-card-float-a {
+    animation: play-card-float-a 6.4s ease-in-out infinite;
+  }
+
+  .play-card-float-b {
+    animation: play-card-float-b 7.2s ease-in-out infinite;
+  }
+
+  .capability-marquee {
+    animation: capability-marquee 34s linear infinite;
+  }
+
+  .capability-marquee-reverse {
+    animation: capability-marquee 42s linear infinite reverse;
+  }
+
+  .capability-marquee:hover,
+  .capability-marquee-reverse:hover {
+    animation-play-state: paused;
+  }
+
+  .index-tile {
+    @apply type-index inline-flex h-12 w-12 items-center justify-center rounded-[6px] bg-primary-5 text-primary-0;
+  }
+
+  .mobile-menu-button {
+    @apply inline-flex h-10 w-10 items-center justify-center rounded-[6px] border border-grey-4 text-grey-0 transition-colors duration-200 dark:border-grey-1 dark:text-grey-5 lg:hidden;
+  }
+
+  .text-link {
+    @apply type-button inline-flex items-center gap-2 text-secondary-1 transition-colors duration-200 hover:text-secondary-3 dark:text-secondary-4;
+  }
+
+  .text-link svg,
+  .primary-button svg,
+  .secondary-button svg,
+  .compact-primary-button svg,
+  .compact-secondary-button svg {
+    transition: transform 180ms ease;
+  }
+
+  .text-link:hover svg,
+  .primary-button:hover svg,
+  .secondary-button:hover svg,
+  .compact-primary-button:hover svg,
+  .compact-secondary-button:hover svg {
+    transform: translate3d(2px, -2px, 0);
+  }
+
+  .primary-button {
+    @apply type-button inline-flex items-center gap-2 rounded-[6px] bg-grey-0 px-5 py-3 text-grey-5 transition-colors duration-200 hover:bg-secondary-1;
+  }
+
+  .secondary-button {
+    @apply type-button inline-flex items-center gap-2 rounded-[6px] border border-grey-3 px-5 py-3 text-grey-0 transition-colors duration-200 hover:border-secondary-2 hover:text-secondary-1;
+  }
+
+  .compact-primary-button {
+    @apply type-button inline-flex items-center gap-2 rounded-[6px] bg-grey-0 px-4 py-2 text-grey-5 transition-colors duration-200 hover:bg-secondary-1 dark:bg-grey-5 dark:text-grey-0 dark:hover:bg-secondary-4;
+  }
+
+  .compact-secondary-button {
+    @apply type-button inline-flex items-center gap-2 rounded-[6px] border border-grey-3 px-4 py-2 text-grey-0 transition-colors duration-200 hover:border-secondary-2 hover:text-secondary-1 dark:border-grey-1 dark:text-grey-5 dark:hover:border-secondary-3 dark:hover:text-secondary-4;
+  }
+
+  .tag-pill {
+    @apply type-tag rounded-full border border-grey-4 bg-grey-5/55 px-3 py-1 text-grey-1 shadow-chip backdrop-blur;
+    transition:
+      border-color 200ms ease,
+      background-color 200ms ease,
+      color 200ms ease,
+      transform 200ms ease;
+  }
+
+  .tag-pill:hover {
+    transform: translate3d(0, -1px, 0);
+  }
+
+  .game-surface {
+    @apply rounded-[8px] border border-[#8a7289] shadow-[4px_4px_0_#d9bed2];
+  }
+
+  .game-surface-strong {
+    @apply rounded-[8px] border border-[#8a7289] shadow-[6px_6px_0_#d9bed2];
+  }
+
+  .game-surface-pink {
+    @apply rounded-[8px] border border-[#8a7289] shadow-[6px_6px_0_#e9bfd0];
+  }
+
+  .game-board-shell {
+    @apply rounded-[8px] border border-[#8a7289] shadow-[8px_8px_0_#e9bfd0];
+  }
+
+  .game-shadow-tight {
+    @apply shadow-[2px_2px_0_#d9bed2];
+  }
+
+  .game-shadow-soft {
+    @apply shadow-[3px_3px_0_#d9bed2];
+  }
+
+  .game-surface-soft {
+    @apply rounded-[8px] border border-[#d8c7d5] bg-grey-5 p-5 shadow-surface backdrop-blur;
+  }
+
+  .game-panel-cream {
+    @apply bg-[#fffaf7];
+  }
+
+  .game-panel-lavender {
+    @apply bg-[#f7f1ff];
+  }
+
+  .play-mode-card {
+    @apply rounded-[8px] border p-4 shadow-[7px_7px_0_rgba(0,0,0,0.26)] transition-transform duration-200 hover:-translate-y-1;
+  }
+
+  .play-mode-card-mobile {
+    @apply rounded-[8px] border p-4 shadow-[5px_5px_0_rgba(0,0,0,0.22)] transition-transform duration-200 hover:-translate-y-1;
+  }
+
+  .play-mode-icon {
+    @apply flex h-10 w-10 shrink-0 items-center justify-center rounded-[8px] border border-current bg-white/50;
+  }
+
+  .game-card {
+    @apply rounded-[8px] border border-[#8a7289] p-4 text-left shadow-[4px_4px_0_#d9bed2] transition-transform duration-200 hover:-translate-y-1;
+  }
+
+  .game-card-compact {
+    @apply rounded-[8px] border border-[#8a7289] p-3 text-left shadow-[3px_3px_0_#d9bed2] transition-transform duration-200 hover:-translate-y-1;
+  }
+
+  .game-icon-cell {
+    @apply flex shrink-0 items-center justify-center rounded-[8px] border border-[#8a7289] bg-white/70;
+  }
+
+  .game-badge {
+    @apply rounded-full border border-[#8a7289] bg-white/80 px-3 py-1 font-inter text-xs font-medium;
+  }
+
+  .type-hero {
+    @apply font-inter text-[2.75rem] font-medium leading-[1.06] sm:text-5xl md:text-6xl;
+  }
+
+  .type-section-heading {
+    @apply font-inter text-3xl font-medium leading-tight sm:text-4xl md:text-5xl;
+  }
+
+  .type-section-heading-sm {
+    @apply font-inter text-2xl font-medium leading-tight sm:text-3xl md:text-4xl;
+  }
+
+  .type-card-heading {
+    @apply font-inter text-xl font-medium sm:text-2xl;
+  }
+
+  .type-card-heading-sm {
+    @apply font-inter text-lg font-medium sm:text-xl;
+  }
+
+  .type-stat {
+    @apply font-inter text-3xl font-medium;
+  }
+
+  .type-index {
+    @apply font-inter text-lg font-medium;
+  }
+
+  .type-nav {
+    @apply font-inter text-sm font-light;
+  }
+
+  .type-label {
+    @apply font-inter text-sm font-normal uppercase;
+  }
+
+  .type-kicker {
+    @apply font-inter text-xs font-light uppercase;
+  }
+
+  .type-body-lg {
+    @apply font-inter text-base font-light leading-7 sm:text-lg sm:leading-8;
+  }
+
+  .type-body {
+    @apply font-inter text-sm font-light leading-6;
+  }
+
+  .type-body-base {
+    @apply font-inter text-base font-light leading-7;
+  }
+
+  .type-button {
+    @apply font-inter text-sm font-normal;
+  }
+
+  .type-tag {
+    @apply font-inter text-xs font-light;
+  }
+
+  .type-wordmark {
+    @apply font-inter text-[22px] font-medium tracking-normal;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .surface-card,
+  .surface-photo,
+  .surface-photo-strong,
+  .editorial-chip,
+  .floating-caption,
+  .icon-button,
+  .tag-pill,
+  .text-link svg,
+  .primary-button svg,
+  .secondary-button svg,
+  .compact-primary-button svg,
+  .compact-secondary-button svg {
+    transition: none;
+  }
+
+  .surface-card-hover:hover,
+  .editorial-chip:hover,
+  .floating-caption:hover,
+  .icon-button:hover,
+  .tag-pill:hover,
+  .text-link:hover svg,
+  .primary-button:hover svg,
+  .secondary-button:hover svg,
+  .compact-primary-button:hover svg,
+  .compact-secondary-button:hover svg {
+    transform: none;
+  }
 }
 
 /* Swiper Styling */
