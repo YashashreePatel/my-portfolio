@@ -556,7 +556,7 @@ export default function Playground() {
               Explore playful slices of my engineering work, from agent orchestration and workflow routing to semantic search and ranking decisions.
             </p>
 
-            <div className='mt-10 grid gap-3 sm:grid-cols-2 2xl:hidden'>
+            <div className='mt-10 grid gap-3 sm:grid-cols-2 xl:hidden'>
               {playgroundModes.map((item) => {
                 const Icon = item.icon;
 
@@ -588,8 +588,8 @@ export default function Playground() {
               <a
                 key={item.href}
                 href={item.href}
-                className={`play-mode-card group absolute hidden w-[240px] 2xl:block ${item.card} ${item.float} ${
-                  index === 0 ? 'right-0 top-[18%]' : '-bottom-[10%] -left-16'
+                className={`play-mode-card group absolute hidden w-[220px] xl:block 2xl:w-[240px] ${item.card} ${item.float} ${
+                  index === 0 ? 'right-0 top-[18%]' : 'bottom-[2%] left-0 2xl:-bottom-[10%] 2xl:-left-16'
                 }`}
                 data-reveal
               >

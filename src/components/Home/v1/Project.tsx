@@ -4,13 +4,17 @@ import styles from '@/components/v1/style.module.css';
 import { Projects } from '@/data/Projects';
 import { IProject } from '@/types/IProject';
 
-import { FaGithub } from 'react-icons/fa6';
+import { FaArrowUpRightFromSquare, FaGithub } from 'react-icons/fa6';
 
 type ProjectCardProps = {
   project: IProject;
 }
 
 const ProjectCard = ({ project }: ProjectCardProps) => {
+  const hasProjectLink = Boolean(project.project_link);
+  const isGitHubLink = project.project_link?.includes('github.com');
+  const LinkIcon = isGitHubLink ? FaGithub : FaArrowUpRightFromSquare;
+
   return (
     <div className={`w-full flex flex-col gap-4 bg-[#FFFFFF] dark:bg-[#3A3A3A] items-start justify-start hover:shadow-custom dark:shadow-dark-custom ${styles.project_card}`}>
       <div className='w-full h-[250px] overflow-hidden rounded-t-[3px]'>
@@ -27,11 +31,17 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
           <div className={`w-full text-left ${styles.grey_dark} ${styles.card_title}`}>
             {project.name}
           </div>
-          <div className={`text-right ${styles.grey_dark}`}>
-            <a href={project.project_link} target='_blank' rel='noopener noreferrer'>
-              <FaGithub className={`${styles.social_icons} hover:text-[#B7B7B7]`} />
-            </a>
-          </div>
+          {hasProjectLink && (
+            <div className={`text-right ${styles.grey_dark}`}>
+              <a
+                href={project.project_link}
+                target={project.project_link?.startsWith('/') ? undefined : '_blank'}
+                rel={project.project_link?.startsWith('/') ? undefined : 'noopener noreferrer'}
+              >
+                <LinkIcon className={`${styles.social_icons} hover:text-[#B7B7B7]`} />
+              </a>
+            </div>
+          )}
         </div>
         <div className={`${styles.grey_light} ${styles.body}`}>
           {project.description}

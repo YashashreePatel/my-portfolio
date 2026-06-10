@@ -15,6 +15,7 @@ import { Sections } from '@/data/Sections';
 
 export default function HomeV1() {
   const [currentSection, setCurrentSection] = useState('about');
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const componentRef = useRef<HTMLDivElement | null>(null);
 
   const handleScroll = () => {
@@ -29,7 +30,6 @@ export default function HomeV1() {
           scrollPosition >= sectionElement.offsetTop - offset &&
           scrollPosition < sectionElement.offsetTop + sectionElement.offsetHeight - offset
         ) {
-          console.log('sectionElement.offsetTop - offset', sectionElement.offsetTop - offset)
           setCurrentSection(tag);
         }
       });
@@ -37,6 +37,8 @@ export default function HomeV1() {
   };
 
   useEffect(() => {
+    document.documentElement.classList.remove('dark');
+
     const componentElement = componentRef.current;
 
     if (componentElement) {
@@ -47,15 +49,20 @@ export default function HomeV1() {
       };
     }
   }, []);
+
+  const toggleDarkMode = () => {
+    setIsDarkMode((current) => !current);
+  };
+
   return (
-    <div className={`2xl:w-[1250px] w-full h-full 2xl:m-auto relative 2xl:px-0 xl:px-20 lg:px-16 px-0 2xl:pt-[80px] pt-[50px] ${styles.background}`}>
+    <div className={`2xl:w-[1250px] w-full h-full 2xl:m-auto relative 2xl:px-0 xl:px-20 lg:px-16 px-0 2xl:pt-[80px] pt-[50px] ${styles.background} ${isDarkMode ? `dark ${styles.dark}` : ''}`}>
      {/* <Cursor /> */}
       <div className={`${styles.lines} z-20`}>
         <div className={`${styles.line}`}></div>
         <div className={`${styles.line}`}></div>
         <div className={`${styles.line}`}></div>
       </div>
-      <Header currentSection={currentSection} />
+      <Header currentSection={currentSection} isDarkMode={isDarkMode} onToggleTheme={toggleDarkMode} />
       <div ref={componentRef} className={`w-full 2xl:max-h-[calc(100vh-190px)] lg:max-h-[calc(100vh-160px)] xs:max-h-[calc(100vh-140px)] relative flex flex-col gap-56 2xl:px-36 xl:px-28 sm:px-16 xs:px-8 lg:py-28 sm:py-16 xs:py-8 z-30 ${styles.scrollable}`}>
         <About />
         <Experience />

@@ -1,4 +1,13 @@
 /* Headings and Subheadings */
+.background {
+  background-color: var(--color-grey-5);
+  transition: background-color 0.3s ease;
+}
+
+.dark.background {
+  background-color: #1A1A1A;
+}
+
 .logo {
   font-size: 1.9rem;
   font-weight: 600;

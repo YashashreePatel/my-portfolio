@@ -1,19 +1,16 @@
 'use client';
-import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import styles from '@/components/v1/style.module.css';
 
-import { Intro } from '@/data/Intro';
-import { SocialLinks } from '@/data/SocialLinks';
-
-import * as FaIcons from 'react-icons/fa6';
 import { Sections } from '@/data/Sections';
 
 type HeaderProps = {
   currentSection: string;
+  isDarkMode: boolean;
+  onToggleTheme: () => void;
 }
 
-const Header = ({ currentSection }: HeaderProps) => {
+const Header = ({ currentSection, isDarkMode, onToggleTheme }: HeaderProps) => {
   function smoothScroll(targetId: string) {
     const targetElement = document.getElementById(targetId);
   
@@ -27,26 +24,6 @@ const Header = ({ currentSection }: HeaderProps) => {
     }
   }
 
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  useEffect(() => {
-    setIsDarkMode(document.documentElement.classList.contains('dark'));
-  }, []);
-
-  const toggleDarkMode = () => {
-    const htmlElement = document.documentElement;
-
-    if (htmlElement.classList.contains('dark')) {
-      htmlElement.classList.remove('dark');
-      htmlElement.classList.remove(styles.dark);
-      setIsDarkMode(false);
-    } else {
-      htmlElement.classList.add('dark');
-      htmlElement.classList.add(styles.dark);
-      setIsDarkMode(true);
-    }
-  };
-
   return (
     <div className={`w-full h-[60px] relative flex flex-row items-center justify-between 2xl:px-36 xl:px-28 px-16 lg:mb-[50px] xs:mb-[30px] bg-transperant rounded-[10px] z-40`}>
       {/* Logo in the Left */}
@@ -58,7 +35,7 @@ const Header = ({ currentSection }: HeaderProps) => {
           src={`/images/logo/v1/${isDarkMode ? 'logo-light.png' : 'logo.png'}`}
           alt='logo'
           className={`w-[50px] h-auto transition-transform ${isDarkMode ? 'translate-x-full' : ''} object-cover transition-all duration-300 ease-in-out`}
-          onClick={toggleDarkMode}
+          onClick={onToggleTheme}
         />
       </div>
 
