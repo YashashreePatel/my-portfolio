@@ -6,6 +6,7 @@ import { FiMenu, FiX } from 'react-icons/fi';
 import LogoMark from '@/components/LogoMark';
 import WebsiteStarCta from '@/components/WebsiteStarCta';
 import { Sections } from '@/data/Sections';
+import { scrollToPageSection } from '@/utils/scrollToPageSection';
 
 type HeaderProps = {
   coverInset?: boolean;
@@ -40,7 +41,7 @@ const Header = ({ coverInset = false, forceTransparent = false, lightOnTop = fal
     }
 
     event.preventDefault();
-    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    scrollToPageSection(target);
     window.history.replaceState(null, '', path);
     setIsMenuOpen(false);
   };

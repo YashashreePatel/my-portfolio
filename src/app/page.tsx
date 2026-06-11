@@ -17,6 +17,7 @@ import { Sections } from '@/data/Sections';
 import { Strengths } from '@/data/Strengths';
 import { useReveal } from '@/hooks/useReveal';
 import { useSmoothScroll } from '@/hooks/useSmoothScroll';
+import { scrollToPageSection } from '@/utils/scrollToPageSection';
 
 const education = [
   {
@@ -80,7 +81,7 @@ export default function Home() {
       return;
     }
 
-    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    scrollToPageSection(target);
     window.history.replaceState(null, '', path);
   }, []);
 
