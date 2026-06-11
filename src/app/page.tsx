@@ -19,6 +19,10 @@ import { useReveal } from '@/hooks/useReveal';
 import { useSmoothScroll } from '@/hooks/useSmoothScroll';
 import { scrollToPageSection } from '@/utils/scrollToPageSection';
 
+type SectionNavigationWindow = Window & {
+  __ypSectionNavigationUntil?: number;
+};
+
 const education = [
   {
     degree: 'MS, Information Systems (Software Engineering)',
@@ -95,8 +99,14 @@ export default function Home() {
     const frame = requestAnimationFrame(() => {
       scrollToSection(matchingSection.tag, matchingSection.path);
     });
+    const timeout = window.setTimeout(() => {
+      scrollToSection(matchingSection.tag, matchingSection.path);
+    }, 250);
 
-    return () => cancelAnimationFrame(frame);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.clearTimeout(timeout);
+    };
   }, [pathname, scrollToSection, sectionRoutes]);
 
   useEffect(() => {
@@ -104,6 +114,10 @@ export default function Home() {
 
     const updateSectionPath = () => {
       frame = 0;
+
+      if (((window as SectionNavigationWindow).__ypSectionNavigationUntil ?? 0) > Date.now()) {
+        return;
+      }
 
       const viewportAnchor = window.scrollY + window.innerHeight * 0.48;
       let activePath = '/';

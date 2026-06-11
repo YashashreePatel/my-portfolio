@@ -5,18 +5,23 @@ type LenisWindow = Window & {
       options?: { duration?: number; offset?: number }
     ) => void;
   };
+  __ypSectionNavigationUntil?: number;
 };
 
 export const scrollToPageSection = (target: HTMLElement) => {
-  const lenis = (window as LenisWindow).__ypLenis;
+  const lenisWindow = window as LenisWindow;
+  const lenis = lenisWindow.__ypLenis;
+  const top = target.getBoundingClientRect().top + window.scrollY;
+
+  lenisWindow.__ypSectionNavigationUntil = Date.now() + 1400;
 
   if (lenis) {
-    lenis.scrollTo(target, { duration: 1.1 });
+    lenis.scrollTo(top, { duration: 1.1 });
     return;
   }
 
   window.scrollTo({
-    top: target.offsetTop,
+    top,
     behavior: 'smooth',
   });
 };
