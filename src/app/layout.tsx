@@ -23,7 +23,9 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <head>
-        <link rel="icon" href="/favicon2.ico" />
+        <link rel='icon' href='/favicon2.ico' />
+        <link rel='icon' href='/favicon2.ico' media='(prefers-color-scheme: light)' />
+        <link rel='icon' href='/favicon1.ico' media='(prefers-color-scheme: dark)' />
         {/* <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" /> */}
       </head>

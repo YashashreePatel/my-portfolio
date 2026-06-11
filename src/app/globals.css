@@ -98,6 +98,62 @@ body {
   }
 }
 
+@keyframes grid-sparkle-opacity {
+  0%,
+  100% {
+    opacity: 0.08;
+    filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0));
+  }
+
+  12% {
+    opacity: 0.68;
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.35));
+  }
+
+  28% {
+    opacity: 0.16;
+  }
+
+  52% {
+    opacity: 0.55;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.24));
+  }
+
+  76% {
+    opacity: 0.12;
+  }
+}
+
+@keyframes grid-sparkle-drift {
+  0%,
+  100% {
+    background-position:
+      96px 96px,
+      288px 192px,
+      480px 384px,
+      672px 288px,
+      192px 576px;
+  }
+
+  46% {
+    background-position:
+      96px 288px,
+      384px 192px,
+      576px 480px,
+      672px 96px,
+      288px 576px;
+  }
+
+  74% {
+    background-position:
+      192px 96px,
+      288px 384px,
+      480px 192px,
+      768px 288px,
+      192px 672px;
+  }
+}
+
 @keyframes capability-marquee {
   from {
     transform: translate3d(0, 0, 0);
@@ -137,6 +193,10 @@ body {
   .capability-marquee-reverse {
     animation: none;
   }
+
+  .playground-grid-bg::after {
+    animation: none;
+  }
 }
 
 @layer components {
@@ -150,6 +210,86 @@ body {
 
   .page-warm {
     @apply bg-grey-5 text-grey-0;
+  }
+
+  .about-grid-bg {
+    background-color: var(--color-grey-5);
+    background-image:
+      linear-gradient(rgba(26, 26, 26, 0.022) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(26, 26, 26, 0.022) 1px, transparent 1px);
+    background-size: 96px 96px;
+  }
+
+  .playground-grid-bg {
+    isolation: isolate;
+  }
+
+  .playground-grid-bg > * {
+    position: relative;
+    z-index: 2;
+  }
+
+  .playground-grid-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.22) 0 1px, transparent 2.2px),
+      linear-gradient(rgba(255, 255, 255, 0.065) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.065) 1px, transparent 1px);
+    background-size: 96px 96px, 96px 96px, 96px 96px;
+    background-position: -1px -1px, 0 0, 0 0;
+    opacity: 0.7;
+  }
+
+  .playground-grid-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background-image:
+      radial-gradient(circle at 0 0, rgba(255, 255, 255, 0.82) 0 1.4px, transparent 3px),
+      radial-gradient(circle at 0 0, rgba(255, 255, 255, 0.62) 0 1.2px, transparent 2.8px),
+      radial-gradient(circle at 0 0, rgba(255, 255, 255, 0.48) 0 1.1px, transparent 2.6px),
+      radial-gradient(circle at 0 0, rgba(255, 255, 255, 0.56) 0 1.2px, transparent 2.8px),
+      radial-gradient(circle at 0 0, rgba(255, 255, 255, 0.42) 0 1px, transparent 2.6px);
+    background-position:
+      96px 96px,
+      288px 192px,
+      480px 384px,
+      672px 288px,
+      192px 576px;
+    background-size:
+      384px 384px,
+      576px 576px,
+      768px 768px,
+      864px 864px,
+      960px 960px;
+    animation:
+      grid-sparkle-opacity 3.8s steps(1, end) infinite,
+      grid-sparkle-drift 9.2s steps(1, end) infinite;
+    opacity: 0.72;
+  }
+
+  .playground-grid-bg:not(.dark)::before {
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(160, 48, 73, 0.1) 0 1px, transparent 2.2px),
+      linear-gradient(rgba(26, 26, 26, 0.022) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(26, 26, 26, 0.022) 1px, transparent 1px);
+    opacity: 0.9;
+  }
+
+  .playground-grid-bg:not(.dark)::after {
+    background-image:
+      radial-gradient(circle at 0 0, rgba(160, 48, 73, 0.32) 0 1.3px, transparent 3px),
+      radial-gradient(circle at 0 0, rgba(160, 48, 73, 0.24) 0 1.1px, transparent 2.8px),
+      radial-gradient(circle at 0 0, rgba(160, 48, 73, 0.18) 0 1px, transparent 2.6px),
+      radial-gradient(circle at 0 0, rgba(160, 48, 73, 0.22) 0 1.1px, transparent 2.8px),
+      radial-gradient(circle at 0 0, rgba(160, 48, 73, 0.16) 0 1px, transparent 2.6px);
+    opacity: 0.65;
   }
 
   .page-lab {

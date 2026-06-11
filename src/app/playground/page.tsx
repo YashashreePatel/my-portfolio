@@ -539,7 +539,7 @@ export default function Playground() {
   ];
 
   return (
-    <main className={`relative min-h-screen overflow-hidden text-grey-0 ${styles.bg_transition} ${isDark ? styles.dark : ''}`}>
+    <main className={`playground-grid-bg relative min-h-screen overflow-hidden text-grey-0 ${styles.bg_transition} ${isDark ? styles.dark : ''}`}>
       <Header lightOnTop={isDark} />
 
       <section className='relative flex min-h-screen snap-start items-center px-5 py-28 text-grey-5 sm:px-8 lg:px-10 lg:py-32'>

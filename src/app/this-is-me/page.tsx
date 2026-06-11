@@ -122,7 +122,7 @@ export default function ThisIsMe() {
   }, []);
 
   return (
-    <main className='page-warm relative min-h-screen overflow-hidden'>
+    <main className='about-grid-bg page-warm relative min-h-screen overflow-hidden'>
       <Header coverInset={isCoverVisible} forceTransparent={isCoverVisible} />
 
       <section
