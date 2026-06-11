@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { FiArrowUpRight, FiCloud, FiCode, FiDatabase, FiSearch } from 'react-icons/fi';
 import { FaLinkedin } from 'react-icons/fa6';
 import { gsap } from 'gsap';
@@ -12,6 +13,7 @@ import styles from '@/components/style.module.css';
 import { Experiences } from '@/data/Experiences';
 import { Projects } from '@/data/Projects';
 import { ReferenceTestimonials } from '@/data/ReferenceTestimonials';
+import { Sections } from '@/data/Sections';
 import { Strengths } from '@/data/Strengths';
 import { useReveal } from '@/hooks/useReveal';
 import { useSmoothScroll } from '@/hooks/useSmoothScroll';
@@ -30,6 +32,7 @@ const education = [
 ];
 
 export default function Home() {
+  const pathname = usePathname();
   const [isDark, setIsDark] = useState(true);
   const [expandedReferences, setExpandedReferences] = useState<string[]>([]);
 
@@ -69,6 +72,75 @@ export default function Home() {
   const featuredProjects = Projects.slice(0, 3);
   const featuredExperiences = Experiences.slice(0, 4);
   const capabilityTools = Strengths.flatMap((strength) => strength.tools);
+  const sectionRoutes = useMemo(() => [{ tag: 'intro', path: '/' }, ...Sections], []);
+  const scrollToSection = useCallback((id: string, path = '/') => {
+    const target = document.getElementById(id);
+
+    if (!target) {
+      return;
+    }
+
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window.history.replaceState(null, '', path);
+  }, []);
+
+  useEffect(() => {
+    const matchingSection = sectionRoutes.find((section) => section.path === pathname);
+
+    if (!matchingSection) {
+      return;
+    }
+
+    const frame = requestAnimationFrame(() => {
+      scrollToSection(matchingSection.tag, matchingSection.path);
+    });
+
+    return () => cancelAnimationFrame(frame);
+  }, [pathname, scrollToSection, sectionRoutes]);
+
+  useEffect(() => {
+    let frame = 0;
+
+    const updateSectionPath = () => {
+      frame = 0;
+
+      const viewportAnchor = window.scrollY + window.innerHeight * 0.48;
+      let activePath = '/';
+
+      sectionRoutes.forEach((section) => {
+        const target = document.getElementById(section.tag);
+
+        if (target && target.offsetTop <= viewportAnchor) {
+          activePath = section.path;
+        }
+      });
+
+      if (window.location.pathname !== activePath) {
+        window.history.replaceState(null, '', activePath);
+      }
+    };
+
+    const handleScroll = () => {
+      if (frame) {
+        return;
+      }
+
+      frame = requestAnimationFrame(updateSectionPath);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll);
+
+    return () => {
+      if (frame) {
+        cancelAnimationFrame(frame);
+      }
+
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
+  }, [sectionRoutes]);
+
   const toggleReference = (name: string) => {
     setExpandedReferences((current) => (
       current.includes(name)
@@ -104,7 +176,11 @@ export default function Home() {
             </p>
             <div className='mt-9 flex flex-col gap-3 sm:flex-row'>
               <a
-                href='#projects'
+                href='/what-i-have-been-building'
+                onClick={(event) => {
+                  event.preventDefault();
+                  scrollToSection('projects', '/what-i-have-been-building');
+                }}
                 className='primary-button justify-center dark:bg-grey-5 dark:text-grey-0 dark:hover:bg-secondary-4'
               >
                 View Featured Work
@@ -362,7 +438,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className='relative flex min-h-[70vh] snap-start items-center px-5 py-24 sm:px-8 lg:h-screen lg:px-10'>
+      <section id='academic-foundation' className='relative flex min-h-[70vh] snap-start items-center px-5 py-24 sm:px-8 lg:h-screen lg:px-10'>
         <div className='mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.42fr_1fr]'>
           <div data-reveal>
             <SectionLabel>Education</SectionLabel>

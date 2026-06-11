@@ -260,7 +260,7 @@ const ProjectArchive = async () => {
 
       <section className='relative z-10 px-5 pb-24 pt-36 sm:px-8 lg:px-10'>
         <div className='mx-auto max-w-7xl'>
-          <a href='/#projects' className='text-link'>
+          <a href='/what-i-have-been-building' className='text-link'>
             <FiArrowLeft />
             Featured projects
           </a>

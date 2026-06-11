@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type MouseEvent } from 'react';
 import { FiMenu, FiX } from 'react-icons/fi';
 
 import LogoMark from '@/components/LogoMark';
@@ -25,7 +25,26 @@ const Header = ({ coverInset = false, forceTransparent = false, lightOnTop = fal
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navItems = Sections.filter((section) => section.tag !== 'contact');
+  const navItems = Sections.filter((section) => section.tag !== 'contact' && !section.hidden);
+  const contactSection = Sections.find((section) => section.tag === 'contact') ?? {
+    name: 'Contact',
+    tag: 'contact',
+    path: '/contact',
+  };
+
+  const handleSectionClick = (event: MouseEvent<HTMLAnchorElement>, tag: string, path: string) => {
+    const target = document.getElementById(tag);
+
+    if (!target) {
+      return;
+    }
+
+    event.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window.history.replaceState(null, '', path);
+    setIsMenuOpen(false);
+  };
+
   const showScrolledChrome = isScrolled && !forceTransparent;
   const showLoveStrip = isScrolled;
   const useHeroStrip = forceTransparent || lightOnTop;
@@ -70,7 +89,7 @@ const Header = ({ coverInset = false, forceTransparent = false, lightOnTop = fal
         </div>
 
         <div className='relative flex items-center justify-between px-3 py-3 transition-all duration-300 sm:px-4'>
-          <a href='/#intro' aria-label='Go to intro'>
+          <a href='/' aria-label='Go to intro' onClick={(event) => handleSectionClick(event, 'intro', '/')}>
             <LogoMark />
           </a>
 
@@ -78,7 +97,8 @@ const Header = ({ coverInset = false, forceTransparent = false, lightOnTop = fal
             {navItems.map((section) => (
               <a
                 key={section.tag}
-                href={`/#${section.tag}`}
+                href={section.path}
+                onClick={(event) => handleSectionClick(event, section.tag, section.path)}
                 className={`type-nav transition-colors duration-200 ${coverTextClass}`}
               >
                 {section.name}
@@ -94,7 +114,8 @@ const Header = ({ coverInset = false, forceTransparent = false, lightOnTop = fal
 
           <div className='hidden items-center gap-3 lg:flex'>
             <a
-              href='/#contact'
+              href={contactSection.path}
+              onClick={(event) => handleSectionClick(event, contactSection.tag, contactSection.path)}
               className='compact-primary-button'
             >
               Contact
@@ -119,11 +140,18 @@ const Header = ({ coverInset = false, forceTransparent = false, lightOnTop = fal
 
       {isMenuOpen && (
         <div className='chrome-surface mx-auto mt-3 flex max-w-7xl flex-col gap-2 rounded-[8px] border p-3 lg:hidden'>
-          {[...navItems, { name: 'Contact', tag: 'contact' }, { name: 'Playground', tag: 'playground' }].map((section) => (
+          {[...navItems, contactSection, { name: 'Playground', tag: 'playground', path: '/playground' }].map((section) => (
             <a
               key={section.tag}
-              href={section.tag === 'playground' ? '/playground' : `/#${section.tag}`}
-              onClick={() => setIsMenuOpen(false)}
+              href={section.path}
+              onClick={(event) => {
+                if (section.tag === 'playground') {
+                  setIsMenuOpen(false);
+                  return;
+                }
+
+                handleSectionClick(event, section.tag, section.path);
+              }}
               className='type-nav rounded-[6px] px-3 py-3 text-grey-0 transition-colors duration-200 hover:bg-grey-4 dark:text-grey-5 dark:hover:bg-grey-1'
             >
               {section.name}
