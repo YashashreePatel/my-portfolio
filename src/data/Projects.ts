@@ -4,7 +4,7 @@ export const Projects: IProject[] = [
   {
     name: 'FlowForge Workflow Orchestration Platform',
     completion_date: 'June 2026',
-    description: 'A workflow orchestration platform for defining, running, monitoring, and recovering long-running business processes. It combines a FastAPI execution engine, DAG-based workflow definitions, retry and schedule controls, RBAC, metrics, trace IDs, Docker Compose services, Kubernetes manifests, and a Next.js operator dashboard.',
+    description: 'A workflow orchestration platform for defining, running, monitoring, and recovering long-running business processes with retries, schedules, RBAC, metrics, and an operator dashboard.',
     problem: 'Long-running business workflows needed reliable execution, recovery, scheduling, and monitoring without every service hand-rolling orchestration logic.',
     built: 'A FastAPI workflow engine, Next.js operator UI, DAG execution model, schedule runner, bearer-token RBAC, Prometheus metrics, trace IDs, Docker Compose stack, and Kubernetes manifests.',
     impact: 'Delivered a vertical slice for defining, executing, recovering, and observing workflow runs across API, worker, frontend, and observability services.',

@@ -41,7 +41,7 @@ const workProjects: ArchiveProject[] = [
     year: '2026',
     source: 'Personal',
     title: 'FlowForge Workflow Orchestration Platform',
-    description: 'Distributed workflow orchestration platform for defining, running, monitoring, and recovering long-running business processes, with DAG workflows, persistent execution state, retry policy metadata, pause/resume/cancel controls, schedules, RBAC, Prometheus metrics, trace IDs, Docker Compose services, Kubernetes manifests, and a Next.js operator dashboard.',
+    description: 'Distributed workflow orchestration platform for running long-lived business workflows with DAG execution, retries, schedules, RBAC, metrics, and an operator dashboard.',
     builtWith: ['FastAPI', 'Next.js', 'Docker', 'Prometheus', 'Kubernetes'],
     link: '/archive/flow-forge',
     linkLabel: 'View',
