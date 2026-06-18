@@ -39,6 +39,15 @@ type ArchiveProject = {
 const workProjects: ArchiveProject[] = [
   {
     year: '2026',
+    source: 'Personal',
+    title: 'FlowForge Workflow Orchestration Platform',
+    description: 'Distributed workflow orchestration platform inspired by Temporal and Netflix Conductor, with persistent execution state, retry policy metadata, pause/resume/cancel controls, schedules, RBAC, metrics, trace IDs, and an operator dashboard.',
+    builtWith: ['FastAPI', 'Next.js', 'Docker', 'Prometheus', 'Kubernetes'],
+    link: '/archive/flow-forge',
+    linkLabel: 'View',
+  },
+  {
+    year: '2026',
     source: 'Work',
     title: 'APEX - AI Powered Execution Platform',
     description: 'Distributed microservices platform for automating incident triage workflows with real-time event processing, orchestration, external engineering-tool integrations, and observability.',
@@ -70,6 +79,12 @@ const workProjects: ArchiveProject[] = [
 ];
 
 const repoMeta: Record<string, RepoMeta> = {
+  'flow-forge': {
+    title: 'FlowForge Workflow Orchestration Platform',
+    description: 'Distributed workflow orchestration platform for defining, executing, monitoring, and recovering long-running business workflows.',
+    builtWith: ['FastAPI', 'Next.js', 'Docker', 'Prometheus', 'Kubernetes'],
+    link: '/archive/flow-forge',
+  },
   'daily-news-bot': {
     title: 'Daily News Bot',
     description: 'Python automation for collecting daily news updates and packaging them into a lightweight bot workflow.',
@@ -249,9 +264,12 @@ async function getGitHubRepos() {
 
 const ProjectArchive = async () => {
   const repos = await getGitHubRepos();
+  const curatedProjectTitles = new Set(workProjects.map((project) => project.title));
   const archiveProjects = [
     ...workProjects,
-    ...repos.map(mapRepoToArchiveProject),
+    ...repos
+      .map(mapRepoToArchiveProject)
+      .filter((project) => !curatedProjectTitles.has(project.title)),
   ];
 
   return (

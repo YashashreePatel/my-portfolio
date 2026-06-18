@@ -2,6 +2,18 @@ import { IProject } from '@/types/IProject';
 
 export const Projects: IProject[] = [
   {
+    name: 'FlowForge Workflow Orchestration Platform',
+    completion_date: 'June 2026',
+    description: 'Distributed workflow orchestration platform inspired by Temporal and Netflix Conductor, with persistent workflow state, retries, schedules, RBAC, observability, and an operator dashboard.',
+    problem: 'Long-running business workflows needed reliable execution, recovery, scheduling, and monitoring without every service hand-rolling orchestration logic.',
+    built: 'A FastAPI workflow engine, Next.js operator UI, DAG execution model, schedule runner, bearer-token RBAC, Prometheus metrics, trace IDs, Docker Compose stack, and Kubernetes manifests.',
+    impact: 'Delivered a vertical slice for defining, executing, recovering, and observing workflow runs across API, worker, frontend, and observability services.',
+    tech_stack: ['FastAPI', 'Next.js', 'TypeScript', 'Docker', 'Prometheus', 'Grafana', 'Kubernetes', 'SQLite'],
+    project_link: '/archive/flow-forge',
+    image: '/images/project/userhub.png',
+    image_source: '',
+  },
+  {
     name: 'APEX - AI Powered Execution Platform',
     completion_date: 'June 2026',
     description: 'Distributed microservices platform that automates incident triage workflows with real-time event processing, fault-tolerant orchestration, external engineering-tool integrations, and production observability.',
