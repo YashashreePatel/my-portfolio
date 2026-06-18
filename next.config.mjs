@@ -1,4 +1,17 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  async rewrites() {
+    return [
+      {
+        source: '/archive/flow-forge',
+        destination: 'https://flow-forge-mvp.vercel.app/archive/flow-forge',
+      },
+      {
+        source: '/archive/flow-forge/:path*',
+        destination: 'https://flow-forge-mvp.vercel.app/archive/flow-forge/:path*',
+      },
+    ];
+  },
+};
 
 export default nextConfig;

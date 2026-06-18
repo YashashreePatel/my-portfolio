@@ -419,8 +419,8 @@ export default function Home() {
                     {project.project_link ? (
                       <a
                         href={project.project_link}
-                        target='_blank'
-                        rel='noopener noreferrer'
+                        target={project.project_link === '/archive/flow-forge' || !project.project_link.startsWith('/') ? '_blank' : undefined}
+                        rel={project.project_link === '/archive/flow-forge' || !project.project_link.startsWith('/') ? 'noopener noreferrer' : undefined}
                         className='group/title inline-flex items-center gap-2'
                       >
                         <h3 className='type-card-heading text-grey-0 transition-colors duration-200 group-hover/title:text-secondary-1'>

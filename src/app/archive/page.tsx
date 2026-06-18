@@ -41,7 +41,7 @@ const workProjects: ArchiveProject[] = [
     year: '2026',
     source: 'Personal',
     title: 'FlowForge Workflow Orchestration Platform',
-    description: 'Distributed workflow orchestration platform inspired by Temporal and Netflix Conductor, with persistent execution state, retry policy metadata, pause/resume/cancel controls, schedules, RBAC, metrics, trace IDs, and an operator dashboard.',
+    description: 'Distributed workflow orchestration platform for defining, running, monitoring, and recovering long-running business processes, with DAG workflows, persistent execution state, retry policy metadata, pause/resume/cancel controls, schedules, RBAC, Prometheus metrics, trace IDs, Docker Compose services, Kubernetes manifests, and a Next.js operator dashboard.',
     builtWith: ['FastAPI', 'Next.js', 'Docker', 'Prometheus', 'Kubernetes'],
     link: '/archive/flow-forge',
     linkLabel: 'View',
@@ -222,7 +222,9 @@ const getRepoSource = (repo: GitHubRepo): ArchiveProject['source'] => {
 };
 
 const getLinkProps = (link: string) => (
-  link.startsWith('/')
+  link === '/archive/flow-forge'
+    ? { target: '_blank', rel: 'noopener noreferrer' }
+    : link.startsWith('/')
     ? {}
     : { target: '_blank', rel: 'noopener noreferrer' }
 );
